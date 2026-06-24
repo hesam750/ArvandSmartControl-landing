@@ -80,25 +80,25 @@ export function ArticlesSection() {
                     <div className="flex items-center justify-between mb-3 sm:mb-4">
                       <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground/30" />
                       <span className={`inline-block px-2 sm:px-2.5 py-1 rounded-md text-[9px] sm:text-[10px] data-text tracking-wider border ${getCategoryColor(article.category)}`}>
-                        {(language === 'fa' ? article.category : article.category).toUpperCase()}
+                        {t(`articles.category.${article.category}`).toUpperCase()}
                       </span>
                     </div>
 
                     {/* Title */}
                     <h3 className="font-semibold text-sm sm:text-base mb-2 sm:mb-3 group-hover:text-primary transition-colors line-clamp-2 text-foreground/90">
-                      {language === 'fa' ? article.title : article.title_en}
+                      {language === 'fa' ? article.title : language === 'ar' ? article.title_ar || article.title : article.title_en || article.title}
                     </h3>
 
                     {/* Excerpt */}
                     <p className="text-xs sm:text-sm text-muted-foreground/70 leading-relaxed mb-3 sm:mb-4 line-clamp-3 flex-1">
-                      {language === 'fa' ? article.excerpt : article.excerpt_en}
+                      {language === 'fa' ? article.excerpt : language === 'ar' ? article.excerpt_ar || article.excerpt : article.excerpt_en || article.excerpt}
                     </p>
 
                     {/* Meta */}
                     <div className="flex items-center justify-between text-[9px] sm:text-[10px] data-text text-muted-foreground/40 pt-3 sm:pt-4 border-t border-border/30 tracking-wider">
                       <span className="flex items-center gap-1 sm:gap-1.5">
                         <User className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-                        {language === 'fa' ? article.author : article.author_en}
+                        {language === 'fa' ? article.author : language === 'ar' ? article.author_ar || article.author : article.author_en || article.author}
                       </span>
                       <span className="flex items-center gap-1 sm:gap-1.5">
                         <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3" />

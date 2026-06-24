@@ -129,6 +129,29 @@ export const translations: Record<Language, Record<string, string>> = {
     "about.pillar3.desc": "Every product undergoes rigorous testing under extreme conditions. Our ISO-certified processes ensure reliability in the harshest environments.",
     "about.pillar3.statLabel": "Quality Score",
 
+    // ── Articles ──
+    "articles.badge": "LATEST ARTICLES",
+    "articles.title": "Expert Insights & Industry News",
+    "articles.subtitle": "Stay informed with the latest in cooling technology, energy optimization, and smart control systems.",
+    "articles.readTime": "{minutes} min read",
+    "articles.noArticles": "No articles available yet.",
+    "articles.all": "View All Articles",
+    "articles.category.technology": "Technology",
+    "articles.category.maintenance": "Maintenance",
+    "articles.category.industry": "Industry",
+    "articles.category.tutorial": "Tutorial",
+    "articles.category.news": "News",
+
+    // ── Blog ──
+    "blog.title": "ArvandSmartControl Blog",
+    "blog.subtitle": "Expert insights, guides, and news about smart cooling technology and energy optimization.",
+    "blog.back": "Back to Blog",
+    "blog.readMore": "Read Article",
+    "blog.related": "Related Articles",
+    "blog.notFound": "Article not found",
+    "blog.share": "Share this article",
+    "blog.author": "Author",
+
     // ── Contact ──
     "contact.badge": "GET IN TOUCH",
     "contact.title": "Let's Talk About Your Project",
@@ -256,6 +279,27 @@ export const translations: Record<Language, Record<string, string>> = {
 
     // ── Settings Admin ──
     "admin.settings.description": "Manage system settings and configurations",
+    // ── Settings Sections ──
+    "settings.databaseConnection.title": "Database Connection",
+    "settings.databaseConnection.description": "Configure your MySQL database connection settings",
+    "settings.apiConfiguration.title": "API Configuration",
+    "settings.apiConfiguration.description": "Manage API keys and authentication settings",
+    "settings.notifications.title": "Notifications",
+    "settings.notifications.description": "Configure notification preferences",
+    "settings.host": "Host",
+    "settings.port": "Port",
+    "settings.databaseName": "Database Name",
+    "settings.username": "Username",
+    "settings.password": "Password",
+    "settings.apiKey": "API Key",
+    "settings.webhookUrl": "Webhook URL",
+    "settings.rateLimit": "Rate Limit (req/min)",
+    "settings.emailNotifications": "Email Notifications",
+    "settings.slackWebhook": "Slack Webhook",
+    "settings.testConnection": "Test Connection",
+    "settings.saveChanges": "Save Changes",
+    "settings.mysqlMigration": "MySQL Database Migration",
+    "settings.mysqlDescription": "Currently using JSON files for data storage. When ready to migrate to MySQL, the schema definitions are available in the types file.",
 
     // ── Common ──
     "common.save": "Save",
@@ -404,6 +448,29 @@ export const translations: Record<Language, Record<string, string>> = {
     "about.pillar3.title": "تضمین کیفیت",
     "about.pillar3.desc": "هر محصول تحت آزمایش‌های سختگیرانه در شرایط بحرانی قرار می‌گیرد. فرآیندهای دارای گواهی ISO قابلیت اطمینان را تضمین می‌کند.",
     "about.pillar3.statLabel": "امتیاز کیفیت",
+    // ── Articles ──
+    "articles.badge": "آخرین مقالات",
+    "articles.title": "مقالات تخصصی و اخبار صنعت",
+    "articles.subtitle": "با آخرین فناوری‌های سرمایشی، بهینه‌سازی انرژی و سیستم‌های کنترل هوشمند به‌روز بمانید.",
+    "articles.readTime": "{minutes} دقیقه مطالعه",
+    "articles.noArticles": "هنوز مقاله‌ای موجود نیست.",
+    "articles.all": "مشاهده همه مقالات",
+    "articles.category.technology": "فناوری",
+    "articles.category.maintenance": "نگهداری",
+    "articles.category.industry": "صنعت",
+    "articles.category.tutorial": "آموزشی",
+    "articles.category.news": "اخبار",
+
+    // ── Blog ──
+    "blog.title": "وبلاگ آروانداسمارت‌کنترل",
+    "blog.subtitle": "مقالات تخصصی، راهنماها و اخبار درباره فناوری سرمایش هوشمند و بهینه‌سازی انرژی.",
+    "blog.back": "بازگشت به وبلاگ",
+    "blog.readMore": "خواندن مقاله",
+    "blog.related": "مقالات مرتبط",
+    "blog.notFound": "مقاله پیدا نشد",
+    "blog.share": "اشتراک‌گذاری این مقاله",
+    "blog.author": "نویسنده",
+
 
     // ── Contact ──
     "contact.badge": "ارتباط با ما",
@@ -532,6 +599,27 @@ export const translations: Record<Language, Record<string, string>> = {
 
     // ── Settings Admin ──
     "admin.settings.description": "مدیریت تنظیمات و پیکربندی سیستم",
+    // ── Settings Sections ──
+    "settings.databaseConnection.title": "اتصال به پایگاه داده",
+    "settings.databaseConnection.description": "تنظیمات اتصال به پایگاه داده MySQL خود را پیکربندی کنید",
+    "settings.apiConfiguration.title": "پیکربندی API",
+    "settings.apiConfiguration.description": "مدیریت کلیدهای API و تنظیمات احراز هویت",
+    "settings.notifications.title": "اعلان‌ها",
+    "settings.notifications.description": "تنظیمات اعلان‌ها را پیکربندی کنید",
+    "settings.host": "میزبان",
+    "settings.port": "پورت",
+    "settings.databaseName": "نام پایگاه داده",
+    "settings.username": "نام کاربری",
+    "settings.password": "رمز عبور",
+    "settings.apiKey": "کلید API",
+    "settings.webhookUrl": "آدرس Webhook",
+    "settings.rateLimit": "محدودیت نرخ (درخواست/دقیقه)",
+    "settings.emailNotifications": "اعلان‌های ایمیل",
+    "settings.slackWebhook": "Webhook اسلک",
+    "settings.testConnection": "تست اتصال",
+    "settings.saveChanges": "ذخیره تغییرات",
+    "settings.mysqlMigration": "مهاجرت پایگاه داده MySQL",
+    "settings.mysqlDescription": "در حال حاضر از فایل‌های JSON برای ذخیره داده‌ها استفاده می‌شود. برای مهاجرت به MySQL، تعاریف شِما در فایل types در دسترس است.",
 
     // ── Common ──
     "common.save": "ذخیره",
@@ -680,6 +768,29 @@ export const translations: Record<Language, Record<string, string>> = {
     "about.pillar3.title": "ضمان الجودة",
     "about.pillar3.desc": "كل منتج يخضع لاختبارات صارمة في ظروف قاسية. عملياتنا المعتمدة من ISO تضمن الاعتمادية في أقسى البيئات.",
     "about.pillar3.statLabel": "درجة الجودة",
+    // ── Articles ──
+    "articles.badge": "أحدث المقالات",
+    "articles.title": "خبرات الخبراء وأخبار الصناعة",
+    "articles.subtitle": "ابق على اطلاع بأحدث تقنيات التبريد وتحسين الطاقة وأنظمة التحكم الذكي.",
+    "articles.readTime": "قراءة {minutes} دقيقة",
+    "articles.noArticles": "لا توجد مقالات متاحة بعد.",
+    "articles.all": "عرض جميع المقالات",
+    "articles.category.technology": "تقنية",
+    "articles.category.maintenance": "صيانة",
+    "articles.category.industry": "صناعة",
+    "articles.category.tutorial": "تعليمي",
+    "articles.category.news": "أخبار",
+
+    // ── Blog ──
+    "blog.title": "مدونة أرواند سمارت كونترول",
+    "blog.subtitle": "خبرات الخبراء وأدلة وأخبار حول تكنولوجيا التبريد الذكي وتحسين الطاقة.",
+    "blog.back": "العودة إلى المدونة",
+    "blog.readMore": "اقرأ المقال",
+    "blog.related": "مقالات ذات صلة",
+    "blog.notFound": "المقال غير موجود",
+    "blog.share": "شارك هذا المقال",
+    "blog.author": "الكاتب",
+
 
     // ── Contact ──
     "contact.badge": "تواصل معنا",
@@ -808,6 +919,27 @@ export const translations: Record<Language, Record<string, string>> = {
 
     // ── Settings Admin ──
     "admin.settings.description": "إدارة إعدادات النظام والتكوينات",
+    // ── Settings Sections ──
+    "settings.databaseConnection.title": "اتصال قاعدة البيانات",
+    "settings.databaseConnection.description": "قم بتكوين إعدادات اتصال قاعدة بيانات MySQL",
+    "settings.apiConfiguration.title": "تكوين API",
+    "settings.apiConfiguration.description": "إدارة مفاتيح API وإعدادات المصادقة",
+    "settings.notifications.title": "الإشعارات",
+    "settings.notifications.description": "قم بتكوين تفضيلات الإشعارات",
+    "settings.host": "المضيف",
+    "settings.port": "المنفذ",
+    "settings.databaseName": "اسم قاعدة البيانات",
+    "settings.username": "اسم المستخدم",
+    "settings.password": "كلمة المرور",
+    "settings.apiKey": "مفتاح API",
+    "settings.webhookUrl": "رابط Webhook",
+    "settings.rateLimit": "حد المعدل (طلب/دقيقة)",
+    "settings.emailNotifications": "إشعارات البريد الإلكتروني",
+    "settings.slackWebhook": "Webhook سلاك",
+    "settings.testConnection": "اختبار الاتصال",
+    "settings.saveChanges": "حفظ التغييرات",
+    "settings.mysqlMigration": "ترحيل قاعدة بيانات MySQL",
+    "settings.mysqlDescription": "يتم حالياً استخدام ملفات JSON لتخزين البيانات. عند الترحيل إلى MySQL، تكون تعريفات المخطط متاحة في ملف الأنواع.",
 
     // ── Common ──
     "common.save": "حفظ",

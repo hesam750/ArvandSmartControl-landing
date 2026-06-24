@@ -97,7 +97,7 @@ export default function AdminProducts() {
               <div className="space-y-1.5 mb-4">
                 {product.specs.slice(0, 3).map(spec => (
                   <div key={spec.label} className="flex justify-between text-sm">
-                    <span className="text-muted-foreground/60">{language === 'fa' ? spec.label : spec.label_en}</span>
+                    <span className="text-muted-foreground/60">{language === 'fa' ? spec.label : language === 'ar' ? spec.label_ar || spec.label : spec.label_en || spec.label}</span>
                     <span className="font-medium font-mono text-xs">{spec.value}</span>
                   </div>
                 ))}

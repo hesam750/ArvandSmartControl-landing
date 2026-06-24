@@ -2,12 +2,20 @@
 export interface Article {
   id: string
   slug: string
-  title: string
-  excerpt: string
-  content: string
+  title: string // fa
+  title_en: string
+  title_ar?: string
+  excerpt: string // fa
+  excerpt_en: string
+  excerpt_ar?: string
+  content: string // fa
+  content_en: string
+  content_ar?: string
   category: ArticleCategory
   tags: string[]
-  author: string
+  author: string // fa
+  author_en: string
+  author_ar?: string
   readTime: number // minutes
   publishedAt: string
   featured: boolean

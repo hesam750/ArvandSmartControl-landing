@@ -109,13 +109,13 @@ export default function AdminArticles() {
                     )}
                   </div>
                   <h3 className="font-semibold truncate">
-                    {language === 'fa' ? article.title : article.title_en}
+                    {language === 'fa' ? article.title : language === 'ar' ? article.title_ar || article.title : article.title_en || article.title}
                   </h3>
                   <p className="text-sm text-muted-foreground/70 truncate mt-0.5">
-                    {language === 'fa' ? article.excerpt : article.excerpt_en}
+                    {language === 'fa' ? article.excerpt : language === 'ar' ? article.excerpt_ar || article.excerpt : article.excerpt_en || article.excerpt}
                   </p>
                   <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground/50 font-mono">
-                    <span>{language === 'fa' ? article.author : article.author_en}</span>
+                    <span>{language === 'fa' ? article.author : language === 'ar' ? article.author_ar || article.author : article.author_en || article.author}</span>
                     <span className="flex items-center gap-1">
                       <Clock className="w-3 h-3" />
                       {article.readTime} min

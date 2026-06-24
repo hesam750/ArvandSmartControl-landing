@@ -8,9 +8,6 @@ import {
   Database,
   Key,
   Bell,
-  Shield,
-  Globe,
-  Palette,
   Save,
   RefreshCw,
 } from 'lucide-react'
@@ -20,34 +17,34 @@ export default function SettingsPage() {
 
   const settingsSections = [
     {
-      title: 'Database Connection',
+      titleKey: 'settings.databaseConnection.title',
+      descKey: 'settings.databaseConnection.description',
       icon: Database,
-      description: 'Configure your MySQL database connection settings',
       fields: [
-        { label: 'Host', placeholder: 'localhost', type: 'text' },
-        { label: 'Port', placeholder: '3306', type: 'text' },
-        { label: 'Database Name', placeholder: 'smart_pricing', type: 'text' },
-        { label: 'Username', placeholder: 'root', type: 'text' },
-        { label: 'Password', placeholder: '••••••••', type: 'password' },
+        { labelKey: 'settings.host', placeholder: 'localhost' },
+        { labelKey: 'settings.port', placeholder: '3306' },
+        { labelKey: 'settings.databaseName', placeholder: 'smart_pricing' },
+        { labelKey: 'settings.username', placeholder: 'root' },
+        { labelKey: 'settings.password', placeholder: '••••••••', type: 'password' },
       ],
     },
     {
-      title: 'API Configuration',
+      titleKey: 'settings.apiConfiguration.title',
+      descKey: 'settings.apiConfiguration.description',
       icon: Key,
-      description: 'Manage API keys and authentication settings',
       fields: [
-        { label: 'API Key', placeholder: 'sk-...', type: 'password' },
-        { label: 'Webhook URL', placeholder: 'https://...', type: 'text' },
-        { label: 'Rate Limit (req/min)', placeholder: '100', type: 'number' },
+        { labelKey: 'settings.apiKey', placeholder: 'sk-...', type: 'password' },
+        { labelKey: 'settings.webhookUrl', placeholder: 'https://...' },
+        { labelKey: 'settings.rateLimit', placeholder: '100', type: 'number' },
       ],
     },
     {
-      title: 'Notifications',
+      titleKey: 'settings.notifications.title',
+      descKey: 'settings.notifications.description',
       icon: Bell,
-      description: 'Configure notification preferences',
       fields: [
-        { label: 'Email Notifications', placeholder: 'admin@company.com', type: 'email' },
-        { label: 'Slack Webhook', placeholder: 'https://hooks.slack.com/...', type: 'text' },
+        { labelKey: 'settings.emailNotifications', placeholder: 'admin@company.com', type: 'email' },
+        { labelKey: 'settings.slackWebhook', placeholder: 'https://hooks.slack.com/...' },
       ],
     },
   ]
@@ -61,7 +58,7 @@ export default function SettingsPage() {
       >
         <h1 className="text-2xl font-bold">{t('admin.settings')}</h1>
         <p className="text-muted-foreground/70 font-mono text-sm">
-          Configure your Smart Pricing Engine settings and integrations
+          {t('admin.settings.description')}
         </p>
       </motion.div>
 
@@ -70,7 +67,7 @@ export default function SettingsPage() {
         const Icon = section.icon
         return (
           <motion.div
-            key={section.title}
+            key={section.titleKey}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: sectionIndex * 0.1 }}
@@ -81,17 +78,17 @@ export default function SettingsPage() {
                 <Icon className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h2 className="text-lg font-semibold">{section.title}</h2>
-                <p className="text-sm text-muted-foreground/70">{section.description}</p>
+                <h2 className="text-lg font-semibold">{t(section.titleKey)}</h2>
+                <p className="text-sm text-muted-foreground/70">{t(section.descKey)}</p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {section.fields.map((field) => (
-                <div key={field.label}>
-                  <label className="text-sm font-medium mb-2 block text-muted-foreground/70">{field.label}</label>
+                <div key={field.labelKey}>
+                  <label className="text-sm font-medium mb-2 block text-muted-foreground/70">{t(field.labelKey)}</label>
                   <Input
-                    type={field.type}
+                    type={field.type || 'text'}
                     placeholder={field.placeholder}
                     className="bg-background/50 border-border/40"
                   />
@@ -102,11 +99,11 @@ export default function SettingsPage() {
             <div className="flex justify-end gap-3 mt-6 pt-4 border-t border-border/30">
               <Button variant="outline" size="sm" className="border-border/40">
                 <RefreshCw className="w-4 h-4 me-2" />
-                Test Connection
+                {t('settings.testConnection')}
               </Button>
               <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
                 <Save className="w-4 h-4 me-2" />
-                Save Changes
+                {t('settings.saveChanges')}
               </Button>
             </div>
           </motion.div>
@@ -125,10 +122,9 @@ export default function SettingsPage() {
             <Database className="w-5 h-5 text-primary" />
           </div>
           <div className="flex-1">
-            <h2 className="text-lg font-semibold mb-2">MySQL Database Migration</h2>
+            <h2 className="text-lg font-semibold mb-2">{t('settings.mysqlMigration')}</h2>
             <p className="text-sm text-muted-foreground/70 mb-4">
-              Currently using JSON files for data storage. When ready to migrate to MySQL,
-              the schema definitions are available in <code className="px-1.5 py-0.5 rounded bg-secondary/50 text-xs font-mono">lib/types.ts</code>.
+              {t('settings.mysqlDescription')}
             </p>
             <div className="p-4 rounded-xl bg-background/50 border border-border/30 font-mono text-xs overflow-x-auto">
               <pre className="text-muted-foreground/60">
