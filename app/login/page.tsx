@@ -7,10 +7,12 @@ import { Monitor, Lock, User, Loader2, Eye, EyeOff } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useAuth } from '@/lib/auth-context'
+import { useLanguage } from '@/lib/i18n/language-context'
 
 export default function LoginPage() {
   const router = useRouter()
   const { login } = useAuth()
+  const { t, language, dir } = useLanguage()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -26,10 +28,10 @@ export default function LoginPage() {
       if (success) {
         router.push('/admin')
       } else {
-        setError('نام کاربری یا رمز عبور اشتباه است')
+        setError(t('login.error'))
       }
     } catch {
-      setError('خطایی رخ داد. لطفاً دوباره تلاش کنید.')
+      setError(t('login.error.generic'))
     } finally {
       setLoading(false)
     }
@@ -65,6 +67,7 @@ export default function LoginPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="relative w-full max-w-md"
+        dir={dir}
       >
         <div className="card-command p-6 sm:p-8 md:p-10">
           {/* Logo */}
@@ -76,21 +79,21 @@ export default function LoginPage() {
               Arvand<span className="text-primary">SmartControl</span>
             </h1>
             <p className="text-sm text-muted-foreground/60 mt-1 font-mono tracking-wider">
-              ADMIN PANEL
+              {t('login.title')}
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label className="block text-xs font-mono text-muted-foreground/60 tracking-wider mb-1.5">
-                USERNAME
+                {t('login.username')}
               </label>
               <div className="relative">
                 <User className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/40" />
                 <Input
                   value={username}
                   onChange={e => setUsername(e.target.value)}
-                  placeholder="admin"
+                  placeholder={t('login.username.placeholder')}
                   required
                   className="ps-10 bg-background/50 border-border/40"
                 />
@@ -99,7 +102,7 @@ export default function LoginPage() {
 
             <div>
               <label className="block text-xs font-mono text-muted-foreground/60 tracking-wider mb-1.5">
-                PASSWORD
+                {t('login.password')}
               </label>
               <div className="relative">
                 <Lock className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/40" />
@@ -107,7 +110,7 @@ export default function LoginPage() {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  placeholder="••••••••"
+                  placeholder={t('login.password.placeholder')}
                   required
                   className="ps-10 pe-10 bg-background/50 border-border/40"
                 />
@@ -133,15 +136,15 @@ export default function LoginPage() {
 
             <Button type="submit" disabled={loading} className="w-full py-5">
               {loading ? (
-                <><Loader2 className="w-4 h-4 me-2 animate-spin" />Checking credentials...</>
+                <><Loader2 className="w-4 h-4 me-2 animate-spin" />{t('login.checking')}</>
               ) : (
-                <><Lock className="w-4 h-4 me-2" />Sign In</>
+                <><Lock className="w-4 h-4 me-2" />{t('login.signin')}</>
               )}
             </Button>
           </form>
 
           <p className="text-center text-[10px] text-muted-foreground/30 mt-6 font-mono tracking-wider">
-            AUTHORIZED PERSONNEL ONLY
+            {t('login.footer')}
           </p>
         </div>
       </motion.div>

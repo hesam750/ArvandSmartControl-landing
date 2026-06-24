@@ -135,12 +135,12 @@ export function PricingSection() {
                   </div>
                 ) : (
                   <div className="text-2xl sm:text-3xl font-bold font-mono">
-                    {t('pricing.annually') === 'Annually' ? 'Contact Us' : 'تماس بگیرید'}
+                    {language === 'fa' ? 'تماس بگیرید' : language === 'ar' ? 'اتصل بنا' : 'Contact Us'}
                   </div>
                 )}
                 {plan.price.monthly && isAnnual && (
                   <div className="text-[11px] sm:text-xs text-muted-foreground/50 mt-1">
-                    ${((plan.price.annual || 0) * 12).toLocaleString()}/{language === 'fa' ? 'سالیانه' : 'year'}
+                    ${((plan.price.annual || 0) * 12).toLocaleString()}/{t('pricing.annually').toLowerCase()}
                   </div>
                 )}
               </div>
@@ -149,13 +149,13 @@ export function PricingSection() {
               {plan.popular ? (
                 <Link href="#contact" className="block mb-6 sm:mb-8">
                   <Button className="w-full text-xs sm:text-sm">
-                    {language === 'fa' ? plan.cta_fa : plan.cta}
+                    {plan.cta[language] || plan.cta.en}
                   </Button>
                 </Link>
               ) : (
                 <Link href="#contact" className="block mb-6 sm:mb-8">
                   <Button variant="outline" className="w-full text-xs sm:text-sm border-primary/30 hover:bg-primary/5">
-                    {language === 'fa' ? plan.cta_fa : plan.cta}
+                    {plan.cta[language] || plan.cta.en}
                   </Button>
                 </Link>
               )}
@@ -173,7 +173,7 @@ export function PricingSection() {
                     <div className="flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
                       <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-primary" />
                     </div>
-                    <span className="text-muted-foreground/80">{feature}</span>
+                    <span className="text-muted-foreground/80">{plan.features[language] ? plan.features[language][i] : plan.features.en[i]}</span>
                   </motion.li>
                 ))}
               </ul>

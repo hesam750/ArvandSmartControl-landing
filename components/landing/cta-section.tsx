@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button'
 export function CTASection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: true, margin: '-100px' })
-  const { language } = useLanguage()
+  const { t, language } = useLanguage()
 
   return (
     <section className="relative section-py px-4 overflow-hidden" ref={containerRef}>
@@ -43,36 +43,33 @@ export function CTASection() {
             className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 mb-6 sm:mb-8"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-chart-3 animate-pulse" />
-            <span className="data-text text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-primary/80">READY FOR CONNECTION</span>
+            <span className="data-text text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-primary/80">{t('cta.badge')}</span>
           </motion.div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1] mb-4 sm:mb-6">
-            {language === 'fa' ? (
-              'آماده‌اید تا مدیریت سرمایش خود را متحول کنید؟'
-            ) : (
-              <>
-                Ready to Transform{' '}
-                <span className="text-primary block sm:inline">Your Cooling Management?</span>
-              </>
-            )}
+            {language === 'fa' || language === 'ar'
+              ? t('cta.title')
+              : <>
+                  Ready to Transform{' '}
+                  <span className="text-primary block sm:inline">Your Cooling Management?</span>
+                </>
+            }
           </h2>
 
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground/70 leading-relaxed max-w-xl mx-auto mb-6 sm:mb-8 px-2 sm:px-0">
-            {language === 'fa'
-              ? 'همین حالا شروع کنید و تفاوت را احساس کنید. تیم پشتیبانی ما ۲۴ ساعته آماده کمک به شماست.'
-              : 'Get started today and feel the difference. Our support team is ready 24/7 to help you succeed.'}
+            {t('cta.subtitle')}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
             <Link href="#contact" className="w-full sm:w-auto">
               <Button size="lg" className="w-full sm:w-auto px-8 sm:px-10 py-5 sm:py-6 text-sm sm:text-base group">
                 <Zap className="w-4 h-4 me-2 group-hover:scale-110 transition-transform" />
-                {language === 'fa' ? 'شروع کنید' : 'Get Started'}
+                {t('cta.button')}
               </Button>
             </Link>
             <Link href="#features" className="w-full sm:w-auto">
               <Button size="lg" variant="outline" className="w-full sm:w-auto px-8 sm:px-10 py-5 sm:py-6 text-sm sm:text-base border-primary/20 hover:bg-primary/5">
-                {language === 'fa' ? 'مشاهده مستندات' : 'View Documentation'}
+                {t('cta.docs')}
                 <ArrowRight className="w-4 h-4 ms-1.5 sm:ms-2 rtl:rotate-180" />
               </Button>
             </Link>

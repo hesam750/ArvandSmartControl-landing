@@ -6,43 +6,47 @@ import Link from 'next/link'
 
 const footerLinks = [
   {
-    title: 'Product',
+    title: 'Products',
     title_fa: 'محصولات',
+    titleAr: 'المنتجات',
     links: [
       { label: 'ASC-2000', href: '#products' },
       { label: 'ASC-1000', href: '#products' },
       { label: 'Arvand Cloud', href: '#products' },
-      { label: 'Pricing', label_fa: 'قیمت‌گذاری', href: '#pricing' },
+      { label: 'Pricing', label_fa: 'قیمت‌گذاری', href: '#pricing', tKey: 'footer.link.pricing' },
     ],
   },
   {
     title: 'Company',
     title_fa: 'شرکت',
+    titleAr: 'الشركة',
     links: [
-      { label: 'About', label_fa: 'درباره ما', href: '#about' },
-      { label: 'Blog', label_fa: 'وبلاگ', href: '#articles' },
-      { label: 'Careers', label_fa: 'فرصت‌های شغلی', href: '#' },
-      { label: 'Contact', label_fa: 'تماس', href: '#contact' },
+      { label: 'About', label_fa: 'درباره ما', href: '#about', tKey: 'footer.about' },
+      { label: 'Blog', label_fa: 'وبلاگ', href: '#articles', tKey: 'footer.articles' },
+      { label: 'Careers', label_fa: 'فرصت‌های شغلی', href: '#', tKey: 'footer.careers' },
+      { label: 'Contact', label_fa: 'تماس', href: '#contact', tKey: 'footer.contact' },
     ],
   },
   {
     title: 'Resources',
     title_fa: 'منابع',
+    titleAr: 'الموارد',
     links: [
-      { label: 'Documentation', label_fa: 'مستندات', href: '#' },
-      { label: 'API Reference', label_fa: 'مرجع API', href: '#' },
-      { label: 'Support', label_fa: 'پشتیبانی', href: '#contact' },
-      { label: 'Status', label_fa: 'وضعیت', href: '#' },
+      { label: 'Documentation', label_fa: 'مستندات', href: '#', tKey: 'footer.link.documentation' },
+      { label: 'API Reference', label_fa: 'مرجع API', href: '#', tKey: 'footer.link.api' },
+      { label: 'Support', label_fa: 'پشتیبانی', href: '#contact', tKey: 'footer.support' },
+      { label: 'Status', label_fa: 'وضعیت', href: '#', tKey: 'footer.link.status' },
     ],
   },
   {
     title: 'Legal',
     title_fa: 'قانونی',
+    titleAr: 'القانوني',
     links: [
-      { label: 'Privacy Policy', label_fa: 'حریم خصوصی', href: '#' },
-      { label: 'Terms of Service', label_fa: 'شرایط استفاده', href: '#' },
-      { label: 'Cookie Policy', label_fa: 'سیاست کوکی', href: '#' },
-      { label: 'License', label_fa: 'مجوز', href: '#' },
+      { label: 'Privacy Policy', label_fa: 'حریم خصوصی', href: '#', tKey: 'footer.privacy' },
+      { label: 'Terms of Service', label_fa: 'شرایط استفاده', href: '#', tKey: 'footer.terms' },
+      { label: 'Cookie Policy', label_fa: 'سیاست کوکی', href: '#', tKey: 'footer.link.cookie' },
+      { label: 'License', label_fa: 'مجوز', href: '#', tKey: 'footer.link.license' },
     ],
   },
 ]
@@ -54,7 +58,7 @@ const socialLinks = [
 ]
 
 export function Footer() {
-  const { language } = useLanguage()
+  const { t, language } = useLanguage()
 
   return (
     <footer className="relative border-t border-border/40 overflow-hidden">
@@ -72,7 +76,7 @@ export function Footer() {
               <div className="font-bold text-sm sm:text-base text-foreground leading-tight">
                 Arvand<span className="text-primary">SmartControl</span>
               </div>
-              <div className="data-text text-[8px] sm:text-[9px] text-muted-foreground/30 tracking-[0.15em]">SYSTEM v3.0</div>
+              <div className="data-text text-[8px] sm:text-[9px] text-muted-foreground/30 tracking-[0.15em]">{t('footer.status')}</div>
             </div>
           </Link>
 
@@ -98,7 +102,7 @@ export function Footer() {
           {footerLinks.map((group) => (
             <div key={group.title}>
               <h4 className="text-xs sm:text-sm font-bold text-foreground/80 mb-3 sm:mb-4 data-text tracking-wider">
-                {language === 'fa' ? group.title_fa : group.title}
+                {group.titleAr && language === 'ar' ? group.titleAr : language === 'fa' ? group.title_fa : group.title}
               </h4>
               <ul className="space-y-2 sm:space-y-2.5">
                 {group.links.map((link) => (
@@ -107,7 +111,7 @@ export function Footer() {
                       href={link.href}
                       className="text-xs sm:text-sm text-muted-foreground/60 hover:text-foreground/80 transition-colors"
                     >
-                      {language === 'fa' && link.label_fa ? link.label_fa : link.label}
+                      {t(link.tKey) || link.label}
                     </Link>
                   </li>
                 ))}
@@ -119,16 +123,16 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="pt-6 sm:pt-8 border-t border-border/20 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
           <p className="text-[10px] sm:text-xs text-muted-foreground/40 data-text">
-            &copy; {new Date().getFullYear()} ArvandSmartControl. {language === 'fa' ? 'تمام حقوق محفوظ است.' : 'All rights reserved.'}
+            &copy; {new Date().getFullYear()} ArvandSmartControl. {t('footer.copyright')}
           </p>
           <div className="flex items-center gap-3 sm:gap-4 text-[9px] sm:text-[10px] data-text text-muted-foreground/30 tracking-wider">
-            <span>SYSTEM v3.0</span>
+            <span>{t('footer.status')}</span>
             <span className="w-1 h-1 rounded-full bg-muted-foreground/20" />
-            <span>BUILD 2024.12</span>
+            <span>{t('footer.build')}</span>
             <span className="w-1 h-1 rounded-full bg-muted-foreground/20" />
             <span className="flex items-center gap-1">
               <span className="w-1 h-1 rounded-full bg-chart-3 animate-pulse" />
-              ONLINE
+              {t('footer.online')}
             </span>
           </div>
         </div>

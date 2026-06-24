@@ -11,28 +11,27 @@ import { Textarea } from '@/components/ui/textarea'
 const contactInfo = [
   {
     icon: Phone,
-    title: 'Phone',
-    value: '+98 21 1234 5678',
+    title: { en: 'Phone', fa: 'تلفن', ar: 'هاتف' },
+    value: { en: '+98 21 1234 5678', fa: '+98 21 1234 5678', ar: '+98 21 1234 5678' },
     href: 'tel:+982112345678',
   },
   {
     icon: Mail,
-    title: 'Email',
-    value: 'info@arvandsmartcontrol.com',
+    title: { en: 'Email', fa: 'ایمیل', ar: 'بريد إلكتروني' },
+    value: { en: 'info@arvandsmartcontrol.com', fa: 'info@arvandsmartcontrol.com', ar: 'info@arvandsmartcontrol.com' },
     href: 'mailto:info@arvandsmartcontrol.com',
   },
   {
     icon: MapPin,
-    title: 'Address',
-    value: 'Tehran, Iran',
-    value_fa: 'تهران، ایران',
+    title: { en: 'Address', fa: 'آدرس', ar: 'العنوان' },
+    value: { en: 'Tehran, Iran', fa: 'تهران، ایران', ar: 'طهران، إيران' },
   },
 ]
 
 export function ContactSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: true, margin: '-100px' })
-  const { language } = useLanguage()
+  const { t, language } = useLanguage()
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -59,15 +58,13 @@ export function ContactSection() {
         >
           <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-primary/20 bg-primary/5 text-[10px] sm:text-xs data-text tracking-wider uppercase mb-4 sm:mb-6 text-primary/80">
             <span className="glow-dot text-chart-3" />
-            GET IN TOUCH
+            {t('contact.badge')}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1]">
-            {language === 'fa' ? 'با ما تماس بگیرید' : 'Let&apos;s Talk About'} <span className="text-primary block sm:inline">{language === 'fa' ? 'پروژه شما' : 'Your Project'}</span>
+            {t('contact.title')}
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground/80 leading-relaxed font-mono max-w-2xl mx-auto px-2 sm:px-0">
-            {language === 'fa'
-              ? 'تیم ما آماده پاسخگویی به سوالات شما و ارائه مشاوره تخصصی است.'
-              : 'Our team is ready to answer your questions and provide expert consultation.'}
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
@@ -87,20 +84,20 @@ export function ContactSection() {
                     <Icon className="w-5 sm:w-6 h-5 sm:h-6 text-primary" />
                   </div>
                   <div className="min-w-0">
-                    <div className="text-[10px] sm:text-xs data-text text-muted-foreground/50 tracking-wider mb-0.5">{info.title}</div>
+                    <div className="text-[10px] sm:text-xs data-text text-muted-foreground/50 tracking-wider mb-0.5">{info.title[language] || info.title.en}</div>
                     <div className="text-sm sm:text-base text-foreground/80 font-medium truncate">
-                      {language === 'fa' && info.value_fa ? info.value_fa : info.value}
+                      {info.value[language] || info.value.en}
                     </div>
                   </div>
                 </motion.div>
               )
 
               return info.href ? (
-                <a key={info.title} href={info.href} className="block">
+                <a key={info.title.en} href={info.href} className="block">
                   {content}
                 </a>
               ) : (
-                <div key={info.title}>{content}</div>
+                <div key={info.title.en}>{content}</div>
               )
             })}
           </div>
@@ -122,12 +119,10 @@ export function ContactSection() {
                   <CheckCircle className="w-14 h-14 sm:w-16 sm:h-16 text-chart-3 mb-4 sm:mb-5" />
                 </motion.div>
                 <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">
-                  {language === 'fa' ? 'پیام شما ارسال شد' : 'Message Sent!'}
+                  {t('contact.success')}
                 </h3>
                 <p className="text-xs sm:text-sm text-muted-foreground/70 text-center max-w-sm">
-                  {language === 'fa'
-                    ? 'تیم ما در اسرع وقت با شما تماس خواهد گرفت.'
-                    : 'Our team will get back to you as soon as possible.'}
+                  {t('contact.success.desc')}
                 </p>
               </div>
             ) : (
@@ -135,22 +130,22 @@ export function ContactSection() {
                 <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
                     <label className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
-                      {language === 'fa' ? 'نام' : 'Name'} <span className="text-destructive">*</span>
+                      {t('contact.name')} <span className="text-destructive">*</span>
                     </label>
                     <Input
                       required
-                      placeholder={language === 'fa' ? 'نام خود را وارد کنید' : 'Your name'}
+                      placeholder={t('contact.name')}
                       className="bg-background/50 border-border/40 text-sm"
                     />
                   </div>
                   <div>
                     <label className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
-                      {language === 'fa' ? 'ایمیل' : 'Email'} <span className="text-destructive">*</span>
+                      {t('contact.email')} <span className="text-destructive">*</span>
                     </label>
                     <Input
                       required
                       type="email"
-                      placeholder={language === 'fa' ? 'ایمیل خود را وارد کنید' : 'your@email.com'}
+                      placeholder={t('contact.email')}
                       className="bg-background/50 border-border/40 text-sm"
                     />
                   </div>
@@ -158,22 +153,22 @@ export function ContactSection() {
 
                 <div>
                   <label className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
-                    {language === 'fa' ? 'موضوع' : 'Subject'}
+                    {t('contact.subject')}
                   </label>
                   <Input
-                    placeholder={language === 'fa' ? 'موضوع پیام' : 'Message subject'}
+                    placeholder={t('contact.subject')}
                     className="bg-background/50 border-border/40 text-sm"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
-                    {language === 'fa' ? 'پیام' : 'Message'} <span className="text-destructive">*</span>
+                    {t('contact.message')} <span className="text-destructive">*</span>
                   </label>
                   <Textarea
                     required
                     rows={4}
-                    placeholder={language === 'fa' ? 'پیام خود را بنویسید...' : 'Write your message...'}
+                    placeholder={t('contact.message')}
                     className="bg-background/50 border-border/40 text-sm resize-none"
                   />
                 </div>
@@ -182,12 +177,12 @@ export function ContactSection() {
                   {loading ? (
                     <>
                       <Loader2 className="w-4 h-4 me-2 animate-spin" />
-                      {language === 'fa' ? 'در حال ارسال...' : 'Sending...'}
+                      {t('contact.sending')}
                     </>
                   ) : (
                     <>
                       <Send className="w-4 h-4 me-2" />
-                      {language === 'fa' ? 'ارسال پیام' : 'Send Message'}
+                      {t('contact.submit')}
                     </>
                   )}
                 </Button>

@@ -8,40 +8,31 @@ import { useLanguage } from '@/lib/i18n/language-context'
 const pillars = [
   {
     icon: Eye,
-    title: 'Our Vision',
-    title_fa: 'چشم‌انداز ما',
-    desc: 'To be the global standard in intelligent cooling management, driving efficiency and sustainability across every industry that relies on climate control.',
-    desc_fa: 'تبدیل شدن به استاندارد جهانی در مدیریت هوشمند سرمایش، افزایش بهره‌وری و پایداری در تمام صنایع وابسته به کنترل آب و هوا.',
+    title: { en: 'Our Vision', fa: 'چشم‌انداز ما', ar: 'رؤيتنا' },
+    desc: { en: 'To be the global standard in intelligent cooling management, driving efficiency and sustainability across every industry that relies on climate control.', fa: 'تبدیل شدن به استاندارد جهانی در مدیریت هوشمند سرمایش، افزایش بهره‌وری و پایداری در تمام صنایع وابسته به کنترل آب و هوا.', ar: 'أن نكون المعيار العالمي في الإدارة الذكية للتبريد، دافعين للكفاءة والاستدامة عبر كل صناعة تعتمد على التحكم في المناخ.' },
     stat: '15+',
-    statLabel: 'Years Experience',
-    statLabel_fa: 'سال تجربه',
+    statLabel: { en: 'Years Experience', fa: 'سال تجربه', ar: 'سنوات خبرة' },
   },
   {
     icon: Target,
-    title: 'Our Mission',
-    title_fa: 'رسالت ما',
-    desc: 'Empower facility managers with real-time data, predictive analytics, and seamless control — reducing energy waste and operational risk.',
-    desc_fa: 'توانمندسازی مدیران تأسیسات با داده‌های لحظه‌ای، تحلیل پیش‌بینانه و کنترل یکپارچه - کاهش اتلاف انرژی و ریسک عملیاتی.',
+    title: { en: 'Our Mission', fa: 'رسالت ما', ar: 'رسالتنا' },
+    desc: { en: 'Empower facility managers with real-time data, predictive analytics, and seamless control — reducing energy waste and operational risk.', fa: 'توانمندسازی مدیران تأسیسات با داده‌های لحظه‌ای، تحلیل پیش‌بینانه و کنترل یکپارچه - کاهش اتلاف انرژی و ریسک عملیاتی.', ar: 'تمكين مدراء المرافق ببيانات لحظية وتحليلات تنبؤية وتحكم سلس — تقليل هدر الطاقة والمخاطر التشغيلية.' },
     stat: '10k+',
-    statLabel: 'Units Shipped',
-    statLabel_fa: 'دستگاه ارسال شده',
+    statLabel: { en: 'Units Shipped', fa: 'دستگاه ارسال شده', ar: 'وحدة تم شحنها' },
   },
   {
     icon: ShieldCheck,
-    title: 'Quality Assurance',
-    title_fa: 'تضمین کیفیت',
-    desc: 'Every product undergoes rigorous testing under extreme conditions. Our ISO-certified processes ensure reliability in the harshest environments.',
-    desc_fa: 'هر محصول تحت آزمایش‌های سختگیرانه در شرایط بحرانی قرار می‌گیرد. فرآیندهای دارای گواهی ISO قابلیت اطمینان را تضمین می‌کند.',
+    title: { en: 'Quality Assurance', fa: 'تضمین کیفیت', ar: 'ضمان الجودة' },
+    desc: { en: 'Every product undergoes rigorous testing under extreme conditions. Our ISO-certified processes ensure reliability in the harshest environments.', fa: 'هر محصول تحت آزمایش‌های سختگیرانه در شرایط بحرانی قرار می‌گیرد. فرآیندهای دارای گواهی ISO قابلیت اطمینان را تضمین می‌کند.', ar: 'كل منتج يخضع لاختبارات صارمة في ظروف قاسية. عملياتنا المعتمدة من ISO تضمن الاعتمادية في أقسى البيئات.' },
     stat: '99.9%',
-    statLabel: 'Quality Score',
-    statLabel_fa: 'امتیاز کیفیت',
+    statLabel: { en: 'Quality Score', fa: 'امتیاز کیفیت', ar: 'درجة الجودة' },
   },
 ]
 
 export function AboutSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: true, margin: '-100px' })
-  const { language } = useLanguage()
+  const { t, language } = useLanguage()
 
   return (
     <section id="about" className="relative section-py px-4 overflow-hidden" ref={containerRef}>
@@ -56,13 +47,11 @@ export function AboutSection() {
           className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 lg:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-4 sm:mb-6">
-            {language === 'fa' ? 'چرا' : 'Why'}{' '}
+            {t('about.title.simple').replace(/\?$/, '')}{' '}
             <span className="text-primary">ArvandSmartControl</span>?
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground/80 leading-relaxed font-mono max-w-2xl mx-auto px-2 sm:px-0">
-            {language === 'fa'
-              ? 'ما در خط مقدم فناوری مدیریت سرمایش هستیم و راه‌حل‌های نوآورانه‌ای ارائه می‌دهیم که صنایع را متحول می‌کند.'
-              : 'We are at the forefront of cooling management technology, delivering innovative solutions that transform industries.'}
+            {t('about.subtitle.simple')}
           </p>
         </motion.div>
 
@@ -85,16 +74,16 @@ export function AboutSection() {
                   <div className="text-right ms-2">
                     <div className="text-lg sm:text-xl font-bold font-mono text-primary">{pillar.stat}</div>
                     <div className="text-[8px] sm:text-[9px] data-text text-muted-foreground/40 tracking-widest">
-                      {language === 'fa' ? pillar.statLabel_fa : pillar.statLabel}
+                      {pillar.statLabel[language] || pillar.statLabel.en}
                     </div>
                   </div>
                 </div>
 
                 <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-foreground/90">
-                  {language === 'fa' ? pillar.title_fa : pillar.title}
+                  {pillar.title[language] || pillar.title.en}
                 </h3>
                 <p className="text-xs sm:text-sm text-muted-foreground/70 leading-relaxed flex-1">
-                  {language === 'fa' ? pillar.desc_fa : pillar.desc}
+                  {pillar.desc[language] || pillar.desc.en}
                 </p>
               </motion.div>
             )
