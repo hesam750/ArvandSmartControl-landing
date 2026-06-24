@@ -3,17 +3,19 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { BarChart3, Building2, Users, TrendingUp } from 'lucide-react'
+import { useLanguage } from '@/lib/i18n/language-context'
 
 const stats = [
-  { icon: Building2, value: '3,400+', label: 'Units Connected', sub: 'globally deployed' },
-  { icon: BarChart3, value: '32%', label: 'Avg. Energy Savings', sub: 'verified reduction' },
-  { icon: Users, value: '200+', label: 'Active Clients', sub: 'growing daily' },
-  { icon: TrendingUp, value: '99.7%', label: 'Uptime Rate', sub: '30-day rolling' },
+  { icon: Building2, value: '3,400+', label: { en: 'Units Connected', fa: 'دستگاه متصل', ar: 'وحدات متصلة' }, sub: { en: 'globally deployed', fa: 'مستقر در جهان', ar: 'منشورة عالمياً' } },
+  { icon: BarChart3, value: '32%', label: { en: 'Avg. Energy Savings', fa: 'میانگین صرفه‌جویی انرژی', ar: 'متوسط توفير الطاقة' }, sub: { en: 'verified reduction', fa: 'کاهش تأیید شده', ar: 'تخفيض مؤكد' } },
+  { icon: Users, value: '200+', label: { en: 'Active Clients', fa: 'مشتریان فعال', ar: 'عملاء نشطون' }, sub: { en: 'growing daily', fa: 'رشد روزافزون', ar: 'ينمو يومياً' } },
+  { icon: TrendingUp, value: '99.7%', label: { en: 'Uptime Rate', fa: 'نرخ در دسترس بودن', ar: 'معدل التشغيل' }, sub: { en: '30-day rolling', fa: 'میانگین ۳۰ روزه', ar: 'متوسط ٣٠ يوماً' } },
 ]
 
 export function StatsSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: true, margin: '-100px' })
+  const { language } = useLanguage()
 
   return (
     <section className="relative py-14 sm:py-20 px-4 overflow-hidden" ref={containerRef}>

@@ -69,7 +69,7 @@ export function HeroSection() {
               className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-xs sm:text-sm text-muted-foreground mb-6 sm:mb-8"
             >
               <span className="glow-dot text-chart-3 w-1 sm:w-1.5 h-1 sm:h-1.5" />
-              <span className="data-text text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-primary/80">SYSTEM ONLINE</span>
+              <span className="data-text text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-primary/80">{t('hero.badge.status')}</span>
               <span className="text-[10px] sm:text-xs text-muted-foreground">— v3.0</span>
             </motion.div>
 
@@ -103,15 +103,15 @@ export function HeroSection() {
             <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-[10px] sm:text-xs text-muted-foreground data-text">
               <span className="flex items-center gap-1.5 sm:gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-chart-3 animate-pulse flex-shrink-0" />
-                All Systems Nominal
+                {t('hero.status.nominal')}
               </span>
               <span className="flex items-center gap-1.5 sm:gap-2">
                 <Radio className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                Live Data Feed
+                {t('hero.status.datafeed')}
               </span>
               <span className="flex items-center gap-1.5 sm:gap-2">
                 <Activity className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                24 Units Online
+                {t('hero.status.units')}
               </span>
             </div>
           </motion.div>

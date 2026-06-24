@@ -97,10 +97,10 @@ export function FeaturesSection() {
         >
           <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-primary/20 bg-primary/5 text-[10px] sm:text-xs data-text tracking-wider uppercase mb-4 sm:mb-6 text-primary/80">
             <span className="glow-dot text-chart-3" />
-            CORE CAPABILITIES
+            {t('features.badge')}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1]">
-            <span className="text-foreground">Everything You Need to</span>{' '}
+            <span className="text-foreground">{t('features.title.part1')}</span>{' '}
             <span className="text-primary block sm:inline">Control Your Cooling</span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground/80 leading-relaxed font-mono max-w-2xl mx-auto px-2 sm:px-0">
