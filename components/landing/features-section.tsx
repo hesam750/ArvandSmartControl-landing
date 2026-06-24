@@ -108,7 +108,7 @@ export function FeaturesSection() {
             const Icon = feature.icon
             return (
               <motion.div
-                key={feature.title}
+                key={i}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
