@@ -11,19 +11,19 @@ import { Button } from '@/components/ui/button'
 const categories = [
   {
     id: 'all',
-    label: { en: 'All Products', fa: 'همه محصولات' },
+    label: { en: 'All Products', fa: 'همه محصولات', ar: 'جميع المنتجات' },
   },
   {
     id: 'chillers',
-    label: { en: 'Chillers', fa: 'چیلرها' },
+    label: { en: 'Chillers', fa: 'چیلرها', ar: 'المبردات' },
   },
   {
     id: 'controllers',
-    label: { en: 'Controllers', fa: 'کنترلرها' },
+    label: { en: 'Controllers', fa: 'کنترلرها', ar: 'وحدات التحكم' },
   },
   {
     id: 'software',
-    label: { en: 'Software', fa: 'نرم‌افزار' },
+    label: { en: 'Software', fa: 'نرم‌افزار', ar: 'البرمجيات' },
   },
 ]
 
@@ -31,44 +31,36 @@ const products = [
   {
     id: 1,
     name: 'ASC-2000',
-    subtitle: 'Industrial Chiller Controller',
-    subtitle_fa: 'کنترلر چیلر صنعتی',
+    subtitle: { en: 'Industrial Chiller Controller', fa: 'کنترلر چیلر صنعتی', ar: 'وحدة تحكم مبرد صناعي' },
     category: 'controllers',
-    description: 'Advanced industrial controller with real-time monitoring, multi-protocol support, and predictive analytics engine.',
-    description_fa: 'کنترلر صنعتی پیشرفته با پایش لحظه‌ای، پشتیبانی از چندین پروتکل و موتور تحلیل پیش‌بینانه.',
+    description: { en: 'Advanced industrial controller with real-time monitoring, multi-protocol support, and predictive analytics engine.', fa: 'کنترلر صنعتی پیشرفته با پایش لحظه‌ای، پشتیبانی از چندین پروتکل و موتور تحلیل پیش‌بینانه.', ar: 'وحدة تحكم صناعية متقدمة مع مراقبة لحظية ودعم متعدد البروتوكولات ومحرك تحليلات تنبؤية.' },
     specs: ['8 analog inputs', '4 PID loops', 'Modbus TCP/RTU', 'Ethernet/IP'],
     icon: Cpu,
   },
   {
     id: 2,
     name: 'ASC-1000',
-    subtitle: 'Commercial Chiller Controller',
-    subtitle_fa: 'کنترلر چیلر تجاری',
+    subtitle: { en: 'Commercial Chiller Controller', fa: 'کنترلر چیلر تجاری', ar: 'وحدة تحكم مبرد تجاري' },
     category: 'controllers',
-    description: 'Cost-effective controller for commercial applications with built-in energy optimization algorithms.',
-    description_fa: 'کنترلر مقرون‌به‌صرفه برای کاربردهای تجاری با الگوریتم‌های بهینه‌سازی انرژی داخلی.',
+    description: { en: 'Cost-effective controller for commercial applications with built-in energy optimization algorithms.', fa: 'کنترلر مقرون‌به‌صرفه برای کاربردهای تجاری با الگوریتم‌های بهینه‌سازی انرژی داخلی.', ar: 'وحدة تحكم اقتصادية للتطبيقات التجارية مع خوارزميات تحسين الطاقة المدمجة.' },
     specs: ['4 analog inputs', '2 PID loops', 'BACnet MS/TP', 'Built-in display'],
     icon: Thermometer,
   },
   {
     id: 3,
     name: 'Arvand Cloud',
-    subtitle: 'IoT & Analytics Platform',
-    subtitle_fa: 'پلتفرم IoT و تحلیل',
+    subtitle: { en: 'IoT & Analytics Platform', fa: 'پلتفرم IoT و تحلیل', ar: 'منصة إنترنت الأشياء والتحليلات' },
     category: 'software',
-    description: 'Cloud-based monitoring platform with real-time dashboards, anomaly detection, and mobile alerts.',
-    description_fa: 'پلتفرم نظارت ابری با داشبوردهای لحظه‌ای، تشخیص ناهنجاری و هشدارهای موبایل.',
+    description: { en: 'Cloud-based monitoring platform with real-time dashboards, anomaly detection, and mobile alerts.', fa: 'پلتفرم نظارت ابری با داشبوردهای لحظه‌ای، تشخیص ناهنجاری و هشدارهای موبایل.', ar: 'منصة مراقبة سحابية مع لوحات معلومات لحظية وكشف الشذوذ وتنبيهات الجوال.' },
     specs: ['Unlimited devices', '30-day history', 'API access', 'White-label'],
     icon: Monitor,
   },
   {
     id: 4,
     name: 'ASC-3000',
-    subtitle: 'Premium Modular Controller',
-    subtitle_fa: 'کنترلر مدولار ممتاز',
+    subtitle: { en: 'Premium Modular Controller', fa: 'کنترلر مدولار ممتاز', ar: 'وحدة تحكم معيارية متميزة' },
     category: 'controllers',
-    description: 'Modular controller for large installations with redundant power, hot-swap I/O, and advanced security.',
-    description_fa: 'کنترلر مدولار برای تأسیسات بزرگ با برق اضافی، I/O قابل تعویض و امنیت پیشرفته.',
+    description: { en: 'Modular controller for large installations with redundant power, hot-swap I/O, and advanced security.', fa: 'کنترلر مدولار برای تأسیسات بزرگ با برق اضافی، I/O قابل تعویض و امنیت پیشرفته.', ar: 'وحدة تحكم معيارية للمنشآت الكبيرة مع طاقة احتياطية وإدخال/إخراج قابل للتبديل السريع وأمان متقدم.' },
     specs: ['16 analog inputs', '8 PID loops', 'All protocols', 'Redundant power'],
     icon: Gauge,
   },
@@ -78,7 +70,7 @@ export function ProductsSection() {
   const [activeCategory, setActiveCategory] = useState('all')
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: true, margin: '-100px' })
-  const { language } = useLanguage()
+  const { t, language } = useLanguage()
 
   const filtered = activeCategory === 'all'
     ? products
@@ -99,14 +91,14 @@ export function ProductsSection() {
         >
           <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-primary/20 bg-primary/5 text-[10px] sm:text-xs data-text tracking-wider uppercase mb-4 sm:mb-6 text-primary/80">
             <span className="glow-dot text-chart-3" />
-            PRODUCT LINE
+            {t('products.badge')}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1]">
-            <span className="text-foreground">Built for</span>{' '}
-            <span className="text-primary block sm:inline">Industrial Scale</span>
+            <span className="text-foreground">{t('products.title.part1')}</span>{' '}
+            <span className="text-primary block sm:inline">{t('products.title.part2')}</span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground/80 leading-relaxed font-mono max-w-2xl mx-auto px-2 sm:px-0">
-            From compact controllers to full cloud platforms, every product is engineered for reliability.
+            {t('products.subtitle')}
           </p>
         </motion.div>
 
@@ -122,7 +114,7 @@ export function ProductsSection() {
                   : 'bg-card border border-border/60 text-muted-foreground hover:text-foreground hover:border-border'
               }`}
             >
-              {language === 'fa' ? cat.label.fa : cat.label.en}
+              {cat.label[language] || cat.label.en}
               {activeCategory === cat.id && (
                 <motion.div
                   layoutId="activeTab"
@@ -156,13 +148,13 @@ export function ProductsSection() {
                     <div>
                       <div className="font-bold text-foreground text-sm sm:text-base">{product.name}</div>
                       <div className="text-[10px] sm:text-xs text-muted-foreground/70 data-text tracking-wider">
-                        {language === 'fa' ? product.subtitle_fa : product.subtitle}
+                        {product.subtitle[language] || product.subtitle.en}
                       </div>
                     </div>
                   </div>
 
                   <p className="text-xs sm:text-sm text-muted-foreground/70 leading-relaxed mb-4 sm:mb-5 flex-1">
-                    {language === 'fa' ? product.description_fa : product.description}
+                    {product.description[language] || product.description.en}
                   </p>
 
                   {/* Specs */}
@@ -177,7 +169,7 @@ export function ProductsSection() {
 
                   <Link href="#contact">
                     <Button variant="outline" className="w-full text-xs sm:text-sm border-primary/30 hover:bg-primary/5 text-muted-foreground hover:text-foreground">
-                      {language === 'fa' ? 'استعلام قیمت' : 'Request Quote'}
+                      {t('products.request')}
                       <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ms-1.5 sm:ms-2 rtl:rotate-180" />
                     </Button>
                   </Link>

@@ -8,40 +8,32 @@ import { useLanguage } from '@/lib/i18n/language-context'
 export function HowItWorksSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
-  const { language } = useLanguage()
+  const { t, language } = useLanguage()
 
   const steps = [
     {
       number: '01',
       icon: Database,
-      title: 'Connect & Collect',
-      title_fa: 'اتصال و جمع‌آوری',
-      desc: 'Connect your chillers via Modbus, BACnet, or IoT gateway. Data flows automatically to the cloud.',
-      desc_fa: 'چیلرهای خود را از طریق Modbus، BACnet یا دروازه IoT متصل کنید. داده‌ها به طور خودکار به ابر منتقل می‌شوند.',
+      title: { en: 'Connect & Collect', fa: 'اتصال و جمع‌آوری', ar: 'اتصال وجمع' },
+      desc: { en: 'Connect your chillers via Modbus, BACnet, or IoT gateway. Data flows automatically to the cloud.', fa: 'چیلرهای خود را از طریق Modbus، BACnet یا دروازه IoT متصل کنید. داده‌ها به طور خودکار به ابر منتقل می‌شوند.', ar: 'قم بتوصيل مبرداتك عبر Modbus أو BACnet أو بوابة IoT. تتدفق البيانات تلقائياً إلى السحابة.' },
     },
     {
       number: '02',
       icon: Cpu,
-      title: 'Real-Time Monitoring',
-      title_fa: 'پایش لحظه‌ای',
-      desc: 'Live dashboards display every metric from temperature to power consumption in real time.',
-      desc_fa: 'داشبوردهای زنده تمام معیارها را از دما تا مصرف برق به صورت لحظه‌ای نمایش می‌دهند.',
+      title: { en: 'Real-Time Monitoring', fa: 'پایش لحظه‌ای', ar: 'مراقبة لحظية' },
+      desc: { en: 'Live dashboards display every metric from temperature to power consumption in real time.', fa: 'داشبوردهای زنده تمام معیارها را از دما تا مصرف برق به صورت لحظه‌ای نمایش می‌دهند.', ar: 'لوحات المعلومات الحية تعرض كل مقياس من درجة الحرارة إلى استهلاك الطاقة في الوقت الفعلي.' },
     },
     {
       number: '03',
       icon: TrendingUp,
-      title: 'Analyze & Optimize',
-      title_fa: 'تحلیل و بهینه‌سازی',
-      desc: 'AI-powered analytics identify inefficiencies and recommend optimizations automatically.',
-      desc_fa: 'تحلیل مبتنی بر هوش مصنوعی ناکارآمدی‌ها را شناسایی و بهینه‌سازی‌ها را به طور خودکار توصیه می‌کند.',
+      title: { en: 'Analyze & Optimize', fa: 'تحلیل و بهینه‌سازی', ar: 'تحليل وتحسين' },
+      desc: { en: 'AI-powered analytics identify inefficiencies and recommend optimizations automatically.', fa: 'تحلیل مبتنی بر هوش مصنوعی ناکارآمدی‌ها را شناسایی و بهینه‌سازی‌ها را به طور خودکار توصیه می‌کند.', ar: 'تحليلات مدعومة بالذكاء الاصطناعي تحدد أوجه القصور وتوصي بالتحسينات تلقائياً.' },
     },
     {
       number: '04',
       icon: Rocket,
-      title: 'Scale & Succeed',
-      title_fa: 'توسعه و موفقیت',
-      desc: 'Add more units, users, and facilities seamlessly. Your platform grows with your business.',
-      desc_fa: 'واحدها، کاربران و تأسیسات بیشتری را به طور یکپارچه اضافه کنید. پلتفرم شما با کسب و کارتان رشد می‌کند.',
+      title: { en: 'Scale & Succeed', fa: 'توسعه و موفقیت', ar: 'توسع ونجاح' },
+      desc: { en: 'Add more units, users, and facilities seamlessly. Your platform grows with your business.', fa: 'واحدها، کاربران و تأسیسات بیشتری را به طور یکپارچه اضافه کنید. پلتفرم شما با کسب و کارتان رشد می‌کند.', ar: 'أضف المزيد من الوحدات والمستخدمين والمرافق بسلاسة. منصتك تنمو مع عملك.' },
     },
   ]
 
@@ -60,16 +52,16 @@ export function HowItWorksSection() {
         >
           <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-primary/20 bg-primary/5 text-[10px] sm:text-xs data-text tracking-wider uppercase mb-4 sm:mb-6 text-primary/80">
             <span className="glow-dot text-chart-3" />
-            HOW IT WORKS
+            {t('howItWorks.badge')}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1]">
-            {language === 'fa' ? 'چهار گام ساده تا' : 'Four Simple Steps to'}{' '}
+            {t('howItWorks.title.part1')}{' '}
             <span className="text-primary block sm:inline">
-              {language === 'fa' ? 'مدیریت هوشمند' : 'Smart Management'}
+              {t('howItWorks.title.part2')}
             </span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground/80 leading-relaxed font-mono max-w-2xl mx-auto px-2 sm:px-0">
-            From setup to full control — get your cooling systems online and optimized in no time.
+            {t('howItWorks.subtitle')}
           </p>
         </motion.div>
 
@@ -94,10 +86,10 @@ export function HowItWorksSection() {
                 </div>
 
                 <h3 className="text-base sm:text-lg font-bold mb-2 sm:mb-3 text-foreground/90">
-                  {language === 'fa' ? step.title_fa : step.title}
+                  {step.title[language] || step.title.en}
                 </h3>
                 <p className="text-xs sm:text-sm text-muted-foreground/70 leading-relaxed">
-                  {language === 'fa' ? step.desc_fa : step.desc}
+                  {step.desc[language] || step.desc.en}
                 </p>
 
                 {/* Bottom accent */}

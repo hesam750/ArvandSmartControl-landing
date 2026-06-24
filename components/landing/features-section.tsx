@@ -18,54 +18,48 @@ import { Button } from '@/components/ui/button'
 const featuresList = [
   {
     icon: Cpu,
-    title: 'Real-Time Monitoring',
-    desc_fa: 'پایش لحظه‌ای تمامی چیلرها و تجهیزات سرمایشی از یک داشبورد متمرکز',
-    desc_en: 'Real-time monitoring of all chillers and cooling equipment from a centralized dashboard',
+    title: { en: 'Real-Time Monitoring', fa: 'پایش لحظه‌ای', ar: 'المراقبة اللحظية' },
+    desc: { en: 'Real-time monitoring of all chillers and cooling equipment from a centralized dashboard', fa: 'پایش لحظه‌ای تمامی چیلرها و تجهیزات سرمایشی از یک داشبورد متمرکز', ar: 'مراقبة لحظية لجميع المبردات ومعدات التبريد من لوحة تحكم مركزية' },
     metric: '250+',
     metricLabel: 'DATA POINTS/SEC',
     color: 'text-chart-3',
   },
   {
     icon: BarChart3,
-    title: 'Energy Analytics',
-    desc_fa: 'تحلیل مصرف انرژی و بهینه‌سازی هوشمند با الگوریتم‌های پیشرفته',
-    desc_en: 'Energy consumption analysis and smart optimization with advanced algorithms',
+    title: { en: 'Energy Analytics', fa: 'تحلیل انرژی', ar: 'تحليل الطاقة' },
+    desc: { en: 'Energy consumption analysis and smart optimization with advanced algorithms', fa: 'تحلیل مصرف انرژی و بهینه‌سازی هوشمند با الگوریتم‌های پیشرفته', ar: 'تحليل استهلاك الطاقة والتحسين الذكي باستخدام خوارزميات متقدمة' },
     metric: '32%',
     metricLabel: 'AVG. SAVINGS',
     color: 'text-primary',
   },
   {
     icon: Bell,
-    title: 'Anomaly Detection',
-    desc_fa: 'تشخیص خودکار ناهنجاری‌ها و هشداردهی هوشمند قبل از بروز خرابی',
-    desc_en: 'Automatic anomaly detection and smart alerting before failures occur',
+    title: { en: 'Anomaly Detection', fa: 'تشخیص ناهنجاری', ar: 'كشف الشذوذ' },
+    desc: { en: 'Automatic anomaly detection and smart alerting before failures occur', fa: 'تشخیص خودکار ناهنجاری‌ها و هشداردهی هوشمند قبل از بروز خرابی', ar: 'كشف تلقائي للشذوذ وتنبيه ذكي قبل حدوث الأعطال' },
     metric: '99.7%',
     metricLabel: 'DETECTION RATE',
     color: 'text-chart-4',
   },
   {
     icon: Wifi,
-    title: 'IoT Connectivity',
-    desc_fa: 'اتصال به تمامی تجهیزات از طریق پروتکل‌های Modbus، BACnet و IoT',
-    desc_en: 'Connect to all equipment via Modbus, BACnet and IoT protocols',
+    title: { en: 'IoT Connectivity', fa: 'اتصال IoT', ar: 'اتصال إنترنت الأشياء' },
+    desc: { en: 'Connect to all equipment via Modbus, BACnet and IoT protocols', fa: 'اتصال به تمامی تجهیزات از طریق پروتکل‌های Modbus، BACnet و IoT', ar: 'اتصل بجميع المعدات عبر بروتوكولات Modbus و BACnet وإنترنت الأشياء' },
     metric: '12+',
     metricLabel: 'PROTOCOLS',
     color: 'text-chart-2',
   },
   {
     icon: Shield,
-    title: 'Predictive Maintenance',
-    desc_fa: 'برنامه‌ریزی نگهداری پیش‌بینانه بر اساس تحلیل داده‌های تاریخی',
-    desc_en: 'Predictive maintenance scheduling based on historical data analysis',
+    title: { en: 'Predictive Maintenance', fa: 'نگهداری پیش‌بینانه', ar: 'الصيانة التنبؤية' },
+    desc: { en: 'Predictive maintenance scheduling based on historical data analysis', fa: 'برنامه‌ریزی نگهداری پیش‌بینانه بر اساس تحلیل داده‌های تاریخی', ar: 'جدولة الصيانة التنبؤية بناءً على تحليل البيانات التاريخية' },
     metric: '94%',
     metricLabel: 'ACCURACY',
     color: 'text-chart-3',
   },
   {
     icon: Database,
-    title: 'Cloud Platform',
-    desc_fa: 'دسترسی امن از راه دور به تمامی داده‌ها و کنترل تجهیزات از هر مکان',
-    desc_en: 'Secure remote access to all data and equipment control from anywhere',
+    title: { en: 'Cloud Platform', fa: 'پلتفرم ابری', ar: 'منصة سحابية' },
+    desc: { en: 'Secure remote access to all data and equipment control from anywhere', fa: 'دسترسی امن از راه دور به تمامی داده‌ها و کنترل تجهیزات از هر مکان', ar: 'وصول آمن عن بعد إلى جميع البيانات والتحكم بالمعدات من أي مكان' },
     metric: '99.99%',
     metricLabel: 'UPTIME SLA',
     color: 'text-chart-2',
@@ -101,11 +95,10 @@ export function FeaturesSection() {
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1]">
             <span className="text-foreground">{t('features.title.part1')}</span>{' '}
-            <span className="text-primary block sm:inline">Control Your Cooling</span>
+            <span className="text-primary block sm:inline">{t('features.title.part2')}</span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground/80 leading-relaxed font-mono max-w-2xl mx-auto px-2 sm:px-0">
-            A comprehensive platform for monitoring, analyzing, and optimizing your chiller systems
-            with real-time data and intelligent automation.
+            {t('features.subtitle')}
           </p>
         </motion.div>
 
@@ -132,9 +125,9 @@ export function FeaturesSection() {
                   </div>
                 </div>
 
-                <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2 text-foreground/90 group-hover:text-foreground transition-colors">{feature.title}</h3>
+                <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2 text-foreground/90 group-hover:text-foreground transition-colors">{feature.title[language] || feature.title.en}</h3>
                 <p className="text-xs sm:text-sm text-muted-foreground/70 leading-relaxed">
-                  {language === 'fa' ? feature.desc_fa : feature.desc_en}
+                  {feature.desc[language] || feature.desc.en}
                 </p>
               </motion.div>
             )
@@ -150,7 +143,7 @@ export function FeaturesSection() {
         >
           <Link href="#products">
             <Button variant="outline" className="px-5 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base border-primary/30 hover:bg-primary/5 text-muted-foreground hover:text-foreground">
-              {language === 'fa' ? 'مشاهده همه قابلیت‌ها' : 'View All Capabilities'}
+              {t('features.viewAll')}
               <ArrowRight className="w-4 h-4 ms-1.5 sm:ms-2 rtl:rotate-180" />
             </Button>
           </Link>

@@ -11,40 +11,31 @@ export function PricingSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
   const [isAnnual, setIsAnnual] = useState(true)
-  const { language } = useLanguage()
+  const { t, language } = useLanguage()
 
   const plans = [
     {
-      name: 'Starter',
-      name_fa: 'شروع',
-      desc: 'For small facilities and single-site monitoring.',
-      desc_fa: 'برای تأسیسات کوچک و نظارت تک‌مکانی.',
+      name: { en: 'Starter', fa: 'شروع', ar: 'مبتدئ' },
+      desc: { en: 'For small facilities and single-site monitoring.', fa: 'برای تأسیسات کوچک و نظارت تک‌مکانی.', ar: 'للمنشآت الصغيرة والمراقبة أحادية الموقع.' },
       price: { monthly: 49, annual: 39 },
-      features: ['Up to 5 chillers', 'Real-time monitoring', 'Email alerts', '7-day history', 'Basic analytics'],
-      cta: 'Get Started',
-      cta_fa: 'شروع کنید',
+      features: { en: ['Up to 5 chillers', 'Real-time monitoring', 'Email alerts', '7-day history', 'Basic analytics'], fa: ['تا ۵ چیلر', 'پایش لحظه‌ای', 'هشدار ایمیلی', 'تاریخچه ۷ روزه', 'تحلیل پایه'], ar: ['حتى ٥ مبردات', 'مراقبة لحظية', 'تنبيهات البريد الإلكتروني', 'سجل ٧ أيام', 'تحليلات أساسية'] },
+      cta: { en: 'Get Started', fa: 'شروع کنید', ar: 'ابدأ الآن' },
       popular: false,
     },
     {
-      name: 'Professional',
-      name_fa: 'حرفه‌ای',
-      desc: 'For growing operations with multiple sites.',
-      desc_fa: 'برای عملیات رو به رشد با چندین مکان.',
+      name: { en: 'Professional', fa: 'حرفه‌ای', ar: 'احترافي' },
+      desc: { en: 'For growing operations with multiple sites.', fa: 'برای عملیات رو به رشد با چندین مکان.', ar: 'للعمليات المتنامية مع مواقع متعددة.' },
       price: { monthly: 149, annual: 119 },
-      features: ['Up to 25 chillers', 'Advanced analytics', 'Predictive maintenance', '30-day history', 'API access', 'Priority support'],
-      cta: 'Start Free Trial',
-      cta_fa: 'شروع آزمایشی رایگان',
+      features: { en: ['Up to 25 chillers', 'Advanced analytics', 'Predictive maintenance', '30-day history', 'API access', 'Priority support'], fa: ['تا ۲۵ چیلر', 'تحلیل پیشرفته', 'نگهداری پیش‌بینانه', 'تاریخچه ۳۰ روزه', 'دسترسی API', 'پشتیبانی اولویت‌دار'], ar: ['حتى ٢٥ مبرداً', 'تحليلات متقدمة', 'صيانة تنبؤية', 'سجل ٣٠ يوماً', 'الوصول إلى API', 'دعم ذو أولوية'] },
+      cta: { en: 'Start Free Trial', fa: 'شروع آزمایشی رایگان', ar: 'ابدأ النسخة التجريبية' },
       popular: true,
     },
     {
-      name: 'Enterprise',
-      name_fa: 'سازمانی',
-      desc: 'Custom solutions for large-scale deployments.',
-      desc_fa: 'راه‌حل‌های سفارشی برای استقرار در مقیاس بزرگ.',
+      name: { en: 'Enterprise', fa: 'سازمانی', ar: 'مؤسسات' },
+      desc: { en: 'Custom solutions for large-scale deployments.', fa: 'راه‌حل‌های سفارشی برای استقرار در مقیاس بزرگ.', ar: 'حلول مخصصة للنشر على نطاق واسع.' },
       price: { monthly: null, annual: null },
-      features: ['Unlimited chillers', 'Custom integrations', 'Dedicated account manager', 'Unlimited history', 'White-label option', '24/7 phone support'],
-      cta: 'Contact Sales',
-      cta_fa: 'تماس با فروش',
+      features: { en: ['Unlimited chillers', 'Custom integrations', 'Dedicated account manager', 'Unlimited history', 'White-label option', '24/7 phone support'], fa: ['چیلر نامحدود', 'یکپارچه‌سازی سفارشی', 'مدیر حساب اختصاصی', 'تاریخچه نامحدود', 'گزینه برچسب سفید', 'پشتیبانی تلفنی ۲۴/۷'], ar: ['مبردات غير محدودة', 'تكاملات مخصصة', 'مدير حساب مخصص', 'سجل غير محدود', 'خيار العلامة البيضاء', 'دعم هاتفي ٢٤/٧'] },
+      cta: { en: 'Contact Sales', fa: 'تماس با فروش', ar: 'اتصل بالمبيعات' },
       popular: false,
     },
   ]
@@ -63,18 +54,16 @@ export function PricingSection() {
         >
           <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-primary/20 bg-primary/5 text-[10px] sm:text-xs data-text tracking-wider uppercase mb-4 sm:mb-6 text-primary/80">
             <span className="glow-dot text-chart-3" />
-            PRICING
+            {t('pricing.badge')}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1]">
-            {language === 'fa' ? 'قیمت‌گذاری' : 'Simple, Transparent'}{' '}
+            {t('pricing.title.part1')}{' '}
             <span className="text-primary block sm:inline">
-              {language === 'fa' ? 'شفاف و مقرون به صرفه' : 'Pricing'}
+              {t('pricing.title.part2')}
             </span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground/80 leading-relaxed font-mono max-w-2xl mx-auto px-2 sm:px-0">
-            {language === 'fa'
-              ? 'بدون هزینه پنهان. بدون شگفتی. قیمت‌گذاری که با شما رشد می‌کند.'
-              : 'No hidden costs. No surprises. Pricing that grows with you.'}
+            {t('pricing.subtitle')}
           </p>
 
           {/* Billing toggle */}
@@ -87,7 +76,7 @@ export function PricingSection() {
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              {language === 'fa' ? 'ماهانه' : 'Monthly'}
+              {t('pricing.monthly')}
             </button>
             <button
               onClick={() => setIsAnnual(true)}
@@ -97,9 +86,9 @@ export function PricingSection() {
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              {language === 'fa' ? 'سالیانه' : 'Annually'}
+              {t('pricing.annually')}
               <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-chart-3/20 text-chart-3 text-[9px] sm:text-[10px] font-bold">
-                {language === 'fa' ? '۲۰٪ تخفیف' : 'SAVE 20%'}
+                {t('pricing.save')}
               </span>
             </button>
           </div>
@@ -122,17 +111,17 @@ export function PricingSection() {
                 <div className="absolute -top-3 start-1/2 -translate-x-1/2 z-10">
                   <div className="flex items-center gap-1.5 px-3 sm:px-4 py-1 rounded-full bg-primary text-primary-foreground text-[10px] sm:text-xs font-bold shadow-lg">
                     <Zap className="w-3 h-3" />
-                    {language === 'fa' ? 'محبوب‌ترین' : 'MOST POPULAR'}
+                    {t('pricing.popular')}
                   </div>
                 </div>
               )}
 
               {/* Plan name */}
               <h3 className="text-lg sm:text-xl font-bold mb-1.5 sm:mb-2 text-foreground/90">
-                {language === 'fa' ? plan.name_fa : plan.name}
+                {plan.name[language] || plan.name.en}
               </h3>
               <p className="text-xs sm:text-sm text-muted-foreground/70 mb-5 sm:mb-6">
-                {language === 'fa' ? plan.desc_fa : plan.desc}
+                {plan.desc[language] || plan.desc.en}
               </p>
 
               {/* Price */}
@@ -142,11 +131,11 @@ export function PricingSection() {
                     <span className="text-3xl sm:text-4xl font-bold font-mono">
                       ${isAnnual ? plan.price.annual : plan.price.monthly}
                     </span>
-                    <span className="text-muted-foreground/60 text-xs sm:text-sm">/{language === 'fa' ? 'ماه' : 'mo'}</span>
+                    <span className="text-muted-foreground/60 text-xs sm:text-sm">/{t('pricing.monthly').toLowerCase().slice(0, 2)}</span>
                   </div>
                 ) : (
                   <div className="text-2xl sm:text-3xl font-bold font-mono">
-                    {language === 'fa' ? 'تماس بگیرید' : 'Contact Us'}
+                    {t('pricing.annually') === 'Annually' ? 'Contact Us' : 'تماس بگیرید'}
                   </div>
                 )}
                 {plan.price.monthly && isAnnual && (

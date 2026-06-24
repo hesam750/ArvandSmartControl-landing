@@ -41,8 +41,8 @@ export function StatsSection() {
                 )}
                 <Icon className="w-6 sm:w-7 md:w-8 h-6 sm:h-7 md:h-8 text-primary/40 mx-auto mb-2 sm:mb-3 md:mb-4 group-hover:text-primary/60 transition-colors" />
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-0.5 sm:mb-1 font-mono tracking-tight">{stat.value}</div>
-                <div className="text-xs sm:text-sm text-foreground/80 font-medium">{stat.label}</div>
-                <div className="text-[9px] sm:text-[10px] data-text text-muted-foreground/40 mt-0.5 sm:mt-1 tracking-wider">{stat.sub}</div>
+                <div className="text-xs sm:text-sm text-foreground/80 font-medium">{stat.label[language] || stat.label.en}</div>
+                <div className="text-[9px] sm:text-[10px] data-text text-muted-foreground/40 mt-0.5 sm:mt-1 tracking-wider">{stat.sub[language] || stat.sub.en}</div>
               </motion.div>
             )
           })}
