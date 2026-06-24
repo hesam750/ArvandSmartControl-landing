@@ -2,6 +2,7 @@
 
 import { ThemeProvider } from "./theme-provider"
 import { LanguageProvider } from "@/lib/i18n/language-context"
+import { AuthProvider } from "@/lib/auth-context"
 import { translations } from "@/lib/i18n/translations"
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -13,7 +14,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
       disableTransitionOnChange
     >
       <LanguageProvider translations={translations}>
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </LanguageProvider>
     </ThemeProvider>
   )

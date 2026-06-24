@@ -45,13 +45,13 @@ export default function AdminArticles() {
 
   const getCategoryColor = (cat: string) => {
     const colors: Record<string, string> = {
-      technology: 'bg-primary/20 text-primary',
-      maintenance: 'bg-accent/20 text-accent',
-      industry: 'bg-glow-cyan/20 text-glow-cyan',
-      tutorial: 'bg-glow-green/20 text-glow-green',
-      news: 'bg-destructive/20 text-destructive',
+      technology: 'bg-primary/10 text-primary border-primary/20',
+      maintenance: 'bg-chart-4/10 text-chart-4 border-chart-4/20',
+      industry: 'bg-chart-3/10 text-chart-3 border-chart-3/20',
+      tutorial: 'bg-chart-2/10 text-chart-2 border-chart-2/20',
+      news: 'bg-destructive/10 text-destructive border-destructive/20',
     }
-    return colors[cat] || 'bg-primary/20 text-primary'
+    return colors[cat] || 'bg-primary/10 text-primary border-primary/20'
   }
 
   return (
@@ -64,9 +64,9 @@ export default function AdminArticles() {
       >
         <div>
           <h1 className="text-2xl font-bold">{t('admin.articles.title')}</h1>
-          <p className="text-sm text-muted-foreground">{t('admin.articles.description')}</p>
+          <p className="text-sm text-muted-foreground/70 font-mono">{t('admin.articles.description')}</p>
         </div>
-        <Button className="bg-gradient-to-r from-primary to-accent text-primary-foreground gap-2 glow-primary">
+        <Button className="bg-primary text-primary-foreground gap-2 hover:bg-primary/90 shadow-sm">
           <Plus className="w-4 h-4" />
           {t('admin.articles.add')}
         </Button>
@@ -74,20 +74,20 @@ export default function AdminArticles() {
 
       {/* Search */}
       <div className="relative max-w-md">
-        <Search className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+        <Search className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/40" />
         <input
           value={search}
           onChange={e => setSearch(e.target.value)}
           placeholder={t('admin.articles.search')}
-          className="w-full ps-10 pe-4 py-2.5 rounded-xl glass glass-border bg-transparent text-sm outline-none focus:border-primary/50 transition-colors"
+          className="w-full ps-10 pe-4 py-2.5 rounded-xl border border-border/40 bg-background/50 text-sm outline-none focus:border-primary/50 transition-colors placeholder:text-muted-foreground/30"
         />
       </div>
 
       {/* List */}
       {loading ? (
-        <div className="text-center py-12 text-muted-foreground">{t('common.loading')}</div>
+        <div className="text-center py-12 text-muted-foreground/50 font-mono text-sm">{t('common.loading')}</div>
       ) : filtered.length === 0 ? (
-        <div className="text-center py-12 text-muted-foreground">{t('common.noData')}</div>
+        <div className="text-center py-12 text-muted-foreground/50 font-mono text-sm">{t('common.noData')}</div>
       ) : (
         <div className="space-y-3">
           {filtered.map((article, i) => (
@@ -96,13 +96,13 @@ export default function AdminArticles() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.03 }}
-              className="rounded-xl glass glass-border p-4 sm:p-5 hover:bg-secondary/30 transition-all duration-200"
+              className="card-command p-4 sm:p-5 hover:bg-card/60 transition-all"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className={`px-2 py-0.5 rounded text-xs font-medium ${getCategoryColor(article.category)}`}>
-                      {article.category}
+                    <span className={`px-2 py-0.5 rounded text-[10px] font-mono tracking-wider border ${getCategoryColor(article.category)}`}>
+                      {article.category.toUpperCase()}
                     </span>
                     {article.featured && (
                       <Sparkles className="w-3.5 h-3.5 text-primary" />
@@ -111,10 +111,10 @@ export default function AdminArticles() {
                   <h3 className="font-semibold truncate">
                     {language === 'fa' ? article.title : article.title_en}
                   </h3>
-                  <p className="text-sm text-muted-foreground truncate mt-0.5">
+                  <p className="text-sm text-muted-foreground/70 truncate mt-0.5">
                     {language === 'fa' ? article.excerpt : article.excerpt_en}
                   </p>
-                  <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground/50 font-mono">
                     <span>{language === 'fa' ? article.author : article.author_en}</span>
                     <span className="flex items-center gap-1">
                       <Clock className="w-3 h-3" />
@@ -123,10 +123,10 @@ export default function AdminArticles() {
                   </div>
                 </div>
                 <div className="flex items-center gap-1 flex-shrink-0">
-                  <Button variant="ghost" size="icon" className="w-8 h-8">
+                  <Button variant="ghost" size="icon" className="w-8 h-8 text-muted-foreground/50 hover:text-foreground">
                     <Edit3 className="w-4 h-4" />
                   </Button>
-                  <Button variant="ghost" size="icon" className="w-8 h-8 text-destructive" onClick={() => handleDelete(article.id)}>
+                  <Button variant="ghost" size="icon" className="w-8 h-8 text-destructive/50 hover:text-destructive" onClick={() => handleDelete(article.id)}>
                     <Trash2 className="w-4 h-4" />
                   </Button>
                 </div>

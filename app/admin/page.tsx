@@ -12,9 +12,8 @@ import {
   MessageSquare,
   Plus,
   ArrowRight,
-  TrendingUp,
   Activity,
-  Snowflake,
+  Monitor,
 } from 'lucide-react'
 
 export default function AdminDashboard() {
@@ -53,7 +52,6 @@ export default function AdminDashboard() {
       value: stats.articles,
       subtitle: `${stats.featuredArticles} featured`,
       icon: FileText,
-      color: 'from-primary to-accent',
       href: '/admin/articles',
     },
     {
@@ -61,7 +59,6 @@ export default function AdminDashboard() {
       value: stats.products,
       subtitle: 'chiller models',
       icon: Package,
-      color: 'from-accent to-glow-green',
       href: '/admin/products',
     },
     {
@@ -69,7 +66,6 @@ export default function AdminDashboard() {
       value: stats.unreadMessages,
       subtitle: 'awaiting reply',
       icon: MessageSquare,
-      color: 'from-glow-cyan to-primary',
       href: '/admin/messages',
     },
     {
@@ -77,7 +73,6 @@ export default function AdminDashboard() {
       value: 'Online',
       subtitle: 'all systems operational',
       icon: Activity,
-      color: 'from-glow-green to-accent',
       href: '/admin/settings',
     },
   ]
@@ -100,13 +95,13 @@ export default function AdminDashboard() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-2xl glass gradient-border p-6 sm:p-8"
+        className="card-command p-6 sm:p-8"
       >
         <div className="flex items-center gap-3 mb-2">
-          <Snowflake className="w-8 h-8 text-primary" />
+          <Monitor className="w-8 h-8 text-primary" />
           <h1 className="text-2xl sm:text-3xl font-bold">{t('admin.welcome')}</h1>
         </div>
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground/70 font-mono text-sm">
           Manage your articles, products, and contact messages from this dashboard.
         </p>
       </motion.div>
@@ -123,13 +118,15 @@ export default function AdminDashboard() {
               transition={{ delay: index * 0.1 }}
             >
               <Link href={stat.href}>
-                <div className="group relative rounded-xl glass glass-border p-6 hover:bg-secondary/30 transition-all duration-300 cursor-pointer">
-                  <div className={`absolute top-4 end-4 w-10 h-10 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity`}>
-                    <Icon className="w-5 h-5 text-primary-foreground" />
+                <div className="group card-command p-6 hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/5 transition-all cursor-pointer">
+                  <div className="flex items-start justify-between mb-1">
+                    <div className="text-sm text-muted-foreground/70">{stat.title}</div>
+                    <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/10 flex items-center justify-center">
+                      <Icon className="w-4 h-4 text-primary" />
+                    </div>
                   </div>
-                  <div className="text-sm text-muted-foreground mb-1">{stat.title}</div>
-                  <div className="text-3xl font-bold mb-1">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground">{stat.subtitle}</div>
+                  <div className="text-3xl font-bold font-mono mt-2">{stat.value}</div>
+                  <div className="text-xs text-muted-foreground/50 font-mono tracking-wider mt-1">{stat.subtitle}</div>
                 </div>
               </Link>
             </motion.div>
@@ -143,7 +140,7 @@ export default function AdminDashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="lg:col-span-1 rounded-xl glass glass-border p-6"
+          className="lg:col-span-1 card-command p-6"
         >
           <h2 className="text-lg font-semibold mb-4">{t('admin.quickActions')}</h2>
           <div className="space-y-3">
@@ -153,7 +150,7 @@ export default function AdminDashboard() {
                 <Link key={action.title} href={action.href}>
                   <Button
                     variant="outline"
-                    className="w-full justify-start gap-3 h-12 hover:bg-secondary/50"
+                    className="w-full justify-start gap-3 h-12 border-border/40 hover:bg-secondary/30"
                   >
                     <Icon className="w-4 h-4 text-primary" />
                     {action.title}
@@ -170,11 +167,11 @@ export default function AdminDashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="lg:col-span-2 rounded-xl glass glass-border p-6"
+          className="lg:col-span-2 card-command p-6"
         >
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold">{t('admin.recentActivity')}</h2>
-            <Activity className="w-5 h-5 text-muted-foreground" />
+            <Activity className="w-5 h-5 text-muted-foreground/30" />
           </div>
           <div className="space-y-4">
             {recentActivity.length > 0 ? (
@@ -184,21 +181,21 @@ export default function AdminDashboard() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6 + index * 0.1 }}
-                  className="flex items-center gap-4 p-3 rounded-lg hover:bg-secondary/30 transition-colors"
+                  className="flex items-center gap-4 p-3 rounded-xl hover:bg-secondary/20 transition-colors border border-transparent hover:border-border/20"
                 >
                   <div className={`w-2 h-2 rounded-full ${
                     activity.type === 'article' ? 'bg-primary' :
-                    activity.type === 'product' ? 'bg-accent' : 'bg-glow-green'
+                    activity.type === 'product' ? 'bg-accent' : 'bg-chart-3'
                   }`} />
                   <div className="flex-1">
                     <div className="text-sm font-medium">{activity.action}</div>
-                    <div className="text-xs text-muted-foreground">{activity.item}</div>
+                    <div className="text-xs text-muted-foreground/60">{activity.item}</div>
                   </div>
-                  <div className="text-xs text-muted-foreground">{activity.time}</div>
+                  <div className="text-xs text-muted-foreground/40 font-mono">{activity.time}</div>
                 </motion.div>
               ))
             ) : (
-              <p className="text-sm text-muted-foreground text-center py-4">No recent activity</p>
+              <p className="text-sm text-muted-foreground/50 text-center py-4 font-mono">No recent activity</p>
             )}
           </div>
         </motion.div>

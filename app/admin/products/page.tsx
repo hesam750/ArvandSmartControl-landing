@@ -11,7 +11,7 @@ import {
   Edit3,
   Trash2,
   Search,
-  Snowflake,
+  Monitor,
 } from 'lucide-react'
 import type { Product } from '@/lib/types'
 
@@ -50,9 +50,9 @@ export default function AdminProducts() {
       >
         <div>
           <h1 className="text-2xl font-bold">{t('admin.products.title')}</h1>
-          <p className="text-sm text-muted-foreground">{t('admin.products.description')}</p>
+          <p className="text-sm text-muted-foreground/70 font-mono">{t('admin.products.description')}</p>
         </div>
-        <Button className="bg-gradient-to-r from-primary to-accent text-primary-foreground gap-2 glow-primary">
+        <Button className="bg-primary text-primary-foreground gap-2 hover:bg-primary/90 shadow-sm">
           <Plus className="w-4 h-4" />
           {t('admin.products.add')}
         </Button>
@@ -60,20 +60,20 @@ export default function AdminProducts() {
 
       {/* Search */}
       <div className="relative max-w-md">
-        <Search className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+        <Search className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/40" />
         <input
           value={search}
           onChange={e => setSearch(e.target.value)}
           placeholder={t('admin.products.search')}
-          className="w-full ps-10 pe-4 py-2.5 rounded-xl glass glass-border bg-transparent text-sm outline-none focus:border-primary/50 transition-colors"
+          className="w-full ps-10 pe-4 py-2.5 rounded-xl border border-border/40 bg-background/50 text-sm outline-none focus:border-primary/50 transition-colors placeholder:text-muted-foreground/30"
         />
       </div>
 
       {/* List */}
       {loading ? (
-        <div className="text-center py-12 text-muted-foreground">{t('common.loading')}</div>
+        <div className="text-center py-12 text-muted-foreground/50 font-mono text-sm">{t('common.loading')}</div>
       ) : filtered.length === 0 ? (
-        <div className="text-center py-12 text-muted-foreground">{t('common.noData')}</div>
+        <div className="text-center py-12 text-muted-foreground/50 font-mono text-sm">{t('common.noData')}</div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map((product, i) => (
@@ -82,34 +82,34 @@ export default function AdminProducts() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
-              className="rounded-xl glass gradient-border p-6 hover:bg-secondary/30 transition-all duration-200"
+              className="card-command p-6 hover:bg-card/60 transition-all"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                  <Snowflake className="w-5 h-5 text-primary-foreground" />
+                <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/10 flex items-center justify-center">
+                  <Monitor className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <h3 className="font-semibold">{product.name}</h3>
-                  <p className="text-xs text-muted-foreground">{product.capacity}</p>
+                  <p className="text-xs text-muted-foreground/60 font-mono">{product.capacity}</p>
                 </div>
               </div>
 
               <div className="space-y-1.5 mb-4">
                 {product.specs.slice(0, 3).map(spec => (
                   <div key={spec.label} className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">{language === 'fa' ? spec.label : spec.label_en}</span>
-                    <span className="font-medium">{spec.value}</span>
+                    <span className="text-muted-foreground/60">{language === 'fa' ? spec.label : spec.label_en}</span>
+                    <span className="font-medium font-mono text-xs">{spec.value}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="flex items-center justify-between pt-3 border-t border-border">
-                <span className="text-xs text-muted-foreground">Order: {product.order}</span>
+              <div className="flex items-center justify-between pt-3 border-t border-border/30">
+                <span className="text-xs text-muted-foreground/40 font-mono">Order: {product.order}</span>
                 <div className="flex items-center gap-1">
-                  <Button variant="ghost" size="icon" className="w-8 h-8">
+                  <Button variant="ghost" size="icon" className="w-8 h-8 text-muted-foreground/50 hover:text-foreground">
                     <Edit3 className="w-4 h-4" />
                   </Button>
-                  <Button variant="ghost" size="icon" className="w-8 h-8 text-destructive" onClick={() => handleDelete(product.id)}>
+                  <Button variant="ghost" size="icon" className="w-8 h-8 text-destructive/50 hover:text-destructive" onClick={() => handleDelete(product.id)}>
                     <Trash2 className="w-4 h-4" />
                   </Button>
                 </div>
