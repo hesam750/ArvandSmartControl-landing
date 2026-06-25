@@ -12,14 +12,14 @@ const contactInfo = [
   {
     icon: Phone,
     title: { en: 'Phone', fa: 'تلفن', ar: 'هاتف' },
-    value: { en: '+98 21 1234 5678', fa: '+98 21 1234 5678', ar: '+98 21 1234 5678' },
-    href: 'tel:+982112345678',
+    value: { en: '+989021584678', fa: '+989021584678', ar: '+989021584678' },
+    href: 'tel:+989165760896',
   },
   {
     icon: Mail,
     title: { en: 'Email', fa: 'ایمیل', ar: 'بريد إلكتروني' },
-    value: { en: 'info@arvandsmartcontrol.com', fa: 'info@arvandsmartcontrol.com', ar: 'info@arvandsmartcontrol.com' },
-    href: 'mailto:info@arvandsmartcontrol.com',
+    value: { en: 'hesamnaderi75@gmail.com', fa: 'hesamnaderi75@gmail.com', ar: 'hesamnaderi75@gmail.com' },
+    href: 'hesamnaderi75@gmail.com',
   },
   {
     icon: MapPin,
