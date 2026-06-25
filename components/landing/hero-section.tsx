@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Activity, Zap, Thermometer, Radio, Layers, Palette } from 'lucide-react'
+import { ArrowRight, Activity, Zap, Thermometer, Radio, Layers, Palette, ArrowLeft } from 'lucide-react'
 import { useLanguage } from '@/lib/i18n/language-context'
 import { StarField } from '@/components/ui/star-field'
 
@@ -91,7 +91,7 @@ export function HeroSection() {
                 <Button size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base group relative overflow-hidden">
                   <span className="relative z-10 flex items-center gap-2">
                     {t('hero.cta.primary')}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    {/* <ArrowLeft className="w-4 h-4 group-hover:translate-x-1 transition-transform" /> */}
                   </span>
                 </Button>
               </Link>

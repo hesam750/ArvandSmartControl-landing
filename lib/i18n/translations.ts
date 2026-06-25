@@ -179,6 +179,10 @@ export const translations: Record<Language, Record<string, string>> = {
     "cta.subtitle": "Get started today and feel the difference. Our support team is ready 24/7 to help you succeed.",
     "cta.button": "Get Started",
     "cta.docs": "View Documentation",
+    "why.title.part1":"why",
+    "why.title.part2":"Advanced smart control",
+    "articles.title.part1":"expert",
+    "articles.title.part2":"Insights & Industry News",
 
     // ── Footer ──
     "footer.description": "Advanced smart control and IoT platform for industrial chillers and HVAC systems. Monitor, control, and optimize from anywhere.",
@@ -222,6 +226,43 @@ export const translations: Record<Language, Record<string, string>> = {
     "login.footer": "AUTHORIZED PERSONNEL ONLY",
     "login.error": "Invalid username or password",
     "login.error.generic": "An error occurred. Please try again.",
+
+    // ── Brands ──
+    "brands.badge": "COMPATIBLE WITH",
+    "brands.title.part1": "Works With",
+    "brands.title.part2": "All Major Controllers",
+    "brands.subtitle": "Direct compatibility with the world's leading chiller controller brands. No adapters, no middleware — just connect and monitor.",
+    "brands.note": "And many more — if your controller speaks Modbus, BACnet, or TCP/IP, it will work.",
+
+    // ── Case Studies ──
+    "caseStudies.badge": "SUCCESS STORIES",
+    "caseStudies.title.part1": "Real Results,",
+    "caseStudies.title.part2": "Real Impact",
+    "caseStudies.subtitle": "See how organizations like yours are saving thousands annually with ArvandSmartControl.",
+    "caseStudies.readMore": "Read Full Case Study",
+
+    // ── FAQ ──
+    "faq.badge": "FAQ",
+    "faq.title.part1": "Frequently Asked",
+    "faq.title.part2": "Questions",
+    "faq.subtitle": "Everything you need to know about ArvandSmartControl — answered clearly and honestly.",
+
+    // ── ROI Calculator ──
+    "roi.badge": "ROI CALCULATOR",
+    "roi.title.part1": "See How Much",
+    "roi.title.part2": "You Can Save",
+    "roi.subtitle": "Enter your facility details below and see your estimated annual savings with ArvandSmartControl.",
+    "roi.inputs": "Your Facility",
+    "roi.results": "Estimated Savings",
+    "roi.chillers": "Number of Chillers",
+    "roi.bill": "Monthly Electricity Bill ($)",
+    "roi.improvement": "Expected Energy Reduction (%)",
+    "roi.calculate": "Calculate Savings",
+    "roi.result.annual": "Estimated Annual Savings",
+    "roi.result.reduction": "Energy Reduction",
+    "roi.result.co2": "CO₂ Reduction / Year",
+    "roi.placeholder": "Adjust the sliders above and click Calculate to see your potential savings",
+    "roi.disclaimer": "This is an estimate based on industry averages. Your actual savings may vary. Contact our team for a detailed analysis of your facility.",
 
     // ── Admin ──
     "admin.title": "Admin Panel",
@@ -502,6 +543,11 @@ export const translations: Record<Language, Record<string, string>> = {
     "cta.subtitle": "همین حالا شروع کنید و تفاوت را احساس کنید. تیم پشتیبانی ما ۲۴ ساعته آماده کمک به شماست.",
     "cta.button": "شروع کنید",
     "cta.docs": "مشاهده مستندات",
+    "why.title.part1":"چرا",
+    "why.title.part2":"کنترل هوشمند اروند",
+    "articles.title.part1":"مقالات ",
+    "articles.title.part2":"تخصصی و اخبار صنعت",
+
 
     // ── Footer ──
     "footer.description": "پلتفرم پیشرفته کنترل هوشمند و IoT برای چیلرهای صنعتی و سیستم‌های HVAC. پایش، کنترل و بهینه‌سازی از هر مکان.",
@@ -545,6 +591,43 @@ export const translations: Record<Language, Record<string, string>> = {
     "login.footer": "فقط پرسنل مجاز",
     "login.error": "نام کاربری یا رمز عبور اشتباه است",
     "login.error.generic": "خطایی رخ داد. لطفاً دوباره تلاش کنید.",
+
+    // ── Brands ──
+    "brands.badge": "سازگار با",
+    "brands.title.part1": "همکاری با",
+    "brands.title.part2": "تمام برندهای معتبر",
+    "brands.subtitle": "سازگاری مستقیم با برندهای برتر کنترلر چیلر جهان. بدون آداپتور، بدون میان‌افزار — فقط وصل شوید و نظارت کنید.",
+    "brands.note": "و بسیاری دیگر — اگر کنترلر شما Modbus، BACnet یا TCP/IP پشتیبانی کند، کار خواهد کرد.",
+
+    // ── Case Studies ──
+    "caseStudies.badge": "داستان‌های موفقیت",
+    "caseStudies.title.part1": "نتایج واقعی،",
+    "caseStudies.title.part2": "تأثیر واقعی",
+    "caseStudies.subtitle": "ببینید چگونه سازمان‌هایی مثل شما سالانه هزاران دلار با ArvandSmartControl صرفه‌جویی می‌کنند.",
+    "caseStudies.readMore": "مطالعه کامل",
+
+    // ── FAQ ──
+    "faq.badge": "سوالات متداول",
+    "faq.title.part1": "پرسش‌های",
+    "faq.title.part2": "متداول",
+    "faq.subtitle": "همه چیز درباره ArvandSmartControl که باید بدانید — پاسخ واضح و صادقانه.",
+
+    // ── ROI Calculator ──
+    "roi.badge": "ماشین حساب بازگشت سرمایه",
+    "roi.title.part1": "ببینید چقدر",
+    "roi.title.part2": "می‌توانید صرفه‌جویی کنید",
+    "roi.subtitle": "جزئیات تأسیسات خود را وارد کنید و برآورد صرفه‌جویی سالانه با ArvandSmartControl را مشاهده کنید.",
+    "roi.inputs": "تأسیسات شما",
+    "roi.results": "صرفه‌جویی تخمینی",
+    "roi.chillers": "تعداد چیلرها",
+    "roi.bill": "قبض ماهانه برق (تومان)",
+    "roi.improvement": "کاهش انرژی مورد انتظار (%)",
+    "roi.calculate": "محاسبه صرفه‌جویی",
+    "roi.result.annual": "صرفه‌جویی سالانه تخمینی",
+    "roi.result.reduction": "کاهش انرژی",
+    "roi.result.co2": "کاهش CO₂ در سال",
+    "roi.placeholder": "لغزنده‌ها را تنظیم کنید و روی دکمه محاسبه کلیک کنید تا صرفه‌جویی بالقوه خود را ببینید",
+    "roi.disclaimer": "این یک برآورد بر اساس میانگین صنعت است. صرفه‌جویی واقعی شما ممکن است متفاوت باشد. برای تحلیل دقیق تأسیسات خود با تیم ما تماس بگیرید.",
 
     // ── Admin ──
     "admin.title": "پنل مدیریت",
@@ -825,6 +908,11 @@ export const translations: Record<Language, Record<string, string>> = {
     "cta.subtitle": "ابدأ اليوم واشعر بالفرق. فريق الدعم لدينا جاهز ٢٤/٧ لمساعدتك على النجاح.",
     "cta.button": "ابدأ الآن",
     "cta.docs": "عرض الوثائق",
+    "why.title.part1":"لماذا",
+    "why.title.part2":"التحکم هوشمند اروند",
+    "articles.title.part1":"خبرات",
+    "articles.title.part2":"الخبراء وأخبار الصناعة",
+
 
     // ── Footer ──
     "footer.description": "منصة متقدمة للتحكم الذكي وإنترنت الأشياء للمبردات الصناعية وأنظمة التكييف. راقب وتحكم وحسن من أي مكان.",
@@ -868,6 +956,43 @@ export const translations: Record<Language, Record<string, string>> = {
     "login.footer": "للموظفين المصرح لهم فقط",
     "login.error": "اسم المستخدم أو كلمة المرور غير صحيحة",
     "login.error.generic": "حدث خطأ. يرجى المحاولة لاحقاً.",
+
+    // ── Brands ──
+    "brands.badge": "متوافق مع",
+    "brands.title.part1": "يعمل مع",
+    "brands.title.part2": "جميع وحدات التحكم الرئيسية",
+    "brands.subtitle": "توافق مباشر مع أشهر ماركات وحدات تحكم المبردات في العالم. بدون محولات، بدون وسيط — فقط قم بالتوصيل وراقب.",
+    "brands.note": "والمزيد — إذا كانت وحدة التحكم لديك تدعم Modbus أو BACnet أو TCP/IP، فستعمل.",
+
+    // ── Case Studies ──
+    "caseStudies.badge": "قصص النجاح",
+    "caseStudies.title.part1": "نتائج حقيقية،",
+    "caseStudies.title.part2": "أثر حقيقي",
+    "caseStudies.subtitle": "شاهد كيف توفر مؤسسات مثلك الآلاف سنوياً باستخدام ArvandSmartControl.",
+    "caseStudies.readMore": "اقرأ دراسة الحالة الكاملة",
+
+    // ── FAQ ──
+    "faq.badge": "الأسئلة الشائعة",
+    "faq.title.part1": "الأسئلة",
+    "faq.title.part2": "الشائعة",
+    "faq.subtitle": "كل ما تحتاج معرفته عن ArvandSmartControl — إجابات واضحة وصادقة.",
+
+    // ── ROI Calculator ──
+    "roi.badge": "حاسبة العائد على الاستثمار",
+    "roi.title.part1": "شاهد كم",
+    "roi.title.part2": "يمكنك التوفير",
+    "roi.subtitle": "أدخل تفاصيل منشأتك أدناه وشاهد توفيرك السنوي المقدر مع ArvandSmartControl.",
+    "roi.inputs": "منشأتك",
+    "roi.results": "التوفير المقدر",
+    "roi.chillers": "عدد المبردات",
+    "roi.bill": "فاتورة الكهرباء الشهرية ($)",
+    "roi.improvement": "خفض الطاقة المتوقع (%)",
+    "roi.calculate": "احسب التوفير",
+    "roi.result.annual": "التوفير السنوي المقدر",
+    "roi.result.reduction": "خفض الطاقة",
+    "roi.result.co2": "خفض CO₂ / السنة",
+    "roi.placeholder": "اضبط المنزلّقات أعلاه وانقر على احسب لترى توفيرك المحتمل",
+    "roi.disclaimer": "هذا تقدير بناءً على متوسطات الصناعة. قد يختلف توفيرك الفعلي. اتصل بفريقنا للحصول على تحليل مفصل لمنشأتك.",
 
     // ── Admin ──
     "admin.title": "لوحة الإدارة",
