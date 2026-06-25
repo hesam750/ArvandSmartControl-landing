@@ -36,7 +36,7 @@ export function CTASection() {
           className="text-center"
         >
           {/* Status indicator */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
@@ -44,7 +44,7 @@ export function CTASection() {
           >
             <span className="w-1.5 h-1.5 rounded-full bg-chart-3 animate-pulse" />
             <span className="data-text text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-primary/80">{t('cta.badge')}</span>
-          </motion.div>
+          </motion.div> */}
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1] mb-4 sm:mb-6">
             {language === 'fa' || language === 'ar'
