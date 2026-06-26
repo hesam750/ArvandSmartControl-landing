@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useState, useRef } from 'react'
 import { useLanguage } from '@/lib/i18n/language-context'
 import { BarChart3, TrendingDown, AlertTriangle, CheckCircle, ArrowUpRight, Building2, Building, Hotel } from 'lucide-react'
