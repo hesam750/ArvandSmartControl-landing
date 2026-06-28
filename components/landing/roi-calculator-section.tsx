@@ -100,7 +100,7 @@ export function ROICalculatorSection() {
 
               {/* Monthly bill */}
               <div>
-                <label className="text-xs sm:text-sm font-medium text-muted-foreground mb-1.5 block">
+                <label className="text-xs sm:text-sm font-medium text-muted-foreground  mb-1.5 block">
                   {t('roi.bill')}
                 </label>
                 <div className="relative">
@@ -113,7 +113,7 @@ export function ROICalculatorSection() {
                     max={1000000}
                     value={bill}
                     onChange={(e) => { setBill(Number(e.target.value)); setCalculated(false) }}
-                    className="w-full ps-8 pe-3 py-2 rounded-lg bg-background border border-border/60 text-sm text-foreground
+                    className="w-full px-12 py-2 rounded-lg bg-background border border-border/60 text-sm text-foreground
                       focus:outline-none focus:ring-1 focus:ring-primary/30 focus:border-primary/40 transition-all"
                   />
                 </div>

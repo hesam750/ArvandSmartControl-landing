@@ -23,7 +23,7 @@ export function PricingSection() {
     {
       name: { en: 'Starter', fa: 'شروع', ar: 'مبتدئ' },
       desc: { en: 'For small facilities and single-site monitoring.', fa: 'برای تأسیسات کوچک و نظارت تک‌مکانی.', ar: 'للمنشآت الصغيرة والمراقبة أحادية الموقع.' },
-      price: { monthly: 49, annual: 39 },
+      price: { monthly: 49, annual: 100 },
       features: { en: ['Up to 5 chillers', 'Real-time monitoring', 'Email alerts', '7-day history', 'Basic analytics'], fa: ['تا ۵ چیلر', 'پایش لحظه‌ای', 'هشدار ایمیلی', 'تاریخچه ۷ روزه', 'تحلیل پایه'], ar: ['حتى ٥ مبردات', 'مراقبة لحظية', 'تنبيهات البريد الإلكتروني', 'سجل ٧ أيام', 'تحليلات أساسية'] },
       cta: { en: 'Get Started', fa: 'شروع کنید', ar: 'ابدأ الآن' },
       popular: false,
@@ -31,7 +31,7 @@ export function PricingSection() {
     {
       name: { en: 'Professional', fa: 'حرفه‌ای', ar: 'احترافي' },
       desc: { en: 'For growing operations with multiple sites.', fa: 'برای عملیات رو به رشد با چندین مکان.', ar: 'للعمليات المتنامية مع مواقع متعددة.' },
-      price: { monthly: 149, annual: 119 },
+      price: { monthly: 149, annual: 399 },
       features: { en: ['Up to 25 chillers', 'Advanced analytics', 'Predictive maintenance', '30-day history', 'API access', 'Priority support'], fa: ['تا ۲۵ چیلر', 'تحلیل پیشرفته', 'نگهداری پیش‌بینانه', 'تاریخچه ۳۰ روزه', 'دسترسی API', 'پشتیبانی اولویت‌دار'], ar: ['حتى ٢٥ مبرداً', 'تحليلات متقدمة', 'صيانة تنبؤية', 'سجل ٣٠ يوماً', 'الوصول إلى API', 'دعم ذو أولوية'] },
       cta: { en: 'Start Free Trial', fa: 'شروع آزمایشی رایگان', ar: 'ابدأ النسخة التجريبية' },
       popular: true,
