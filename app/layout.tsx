@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
+import { Vazirmatn } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { Providers } from '@/components/providers/providers'
@@ -10,9 +11,9 @@ const inter = localFont({
   display: 'swap',
 })
 
-const byekan = localFont({
-  src: './fonts/BYekan.ttf',
-  variable: '--font-byekan',
+const vazirmatn = Vazirmatn({
+  subsets: ['arabic', 'latin'],
+  variable: '--font-vazirmatn',
   display: 'swap',
 })
 
@@ -34,7 +35,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fa" suppressHydrationWarning className="bg-background">
-      <body className={`${inter.variable} ${byekan.variable} font-sans antialiased bg-background text-foreground`}>
+      <body className={`${inter.variable} ${vazirmatn.variable} font-sans antialiased bg-background text-foreground`}>
         <Providers>
           {children}
         </Providers>

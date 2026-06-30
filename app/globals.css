@@ -62,7 +62,7 @@
 }
 
 @theme inline {
-  --font-sans: 'InterVariable', 'Inter Variable', system-ui, sans-serif;
+  --font-sans: 'Vazirmatn', 'InterVariable', 'Inter Variable', system-ui, sans-serif;
   --font-mono: 'InterVariable', 'Inter Variable', ui-monospace, SFMono-Regular, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -104,8 +104,8 @@
   html { scroll-behavior: smooth; }
   body { @apply bg-background text-foreground; }
 
-  html[dir="rtl"] { font-family: var(--font-byekan), sans-serif; }
-  html[dir="rtl"] body { font-family: var(--font-byekan), sans-serif; }
+  html[dir="rtl"] { font-family: var(--font-vazirmatn), 'Vazirmatn', sans-serif; }
+  html[dir="rtl"] body { font-family: var(--font-vazirmatn), 'Vazirmatn', sans-serif; }
 
   ::-webkit-scrollbar { width: 5px; height: 5px; }
   ::-webkit-scrollbar-track { background: transparent; }
