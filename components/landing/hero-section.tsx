@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Activity, Zap, Thermometer, Radio, Layers, Palette, ArrowLeft } from 'lucide-react'
 import { useLanguage } from '@/lib/i18n/language-context'
 import TextType from './TextType'
+import { MonitorSlider } from './monitor-slider'
 
 /** Reusable monitor frame with title bar */
 function MonitorFrame({ label, status, children, contentHeight = 'max-h-56' }: { label: string; status: string; children: React.ReactNode; contentHeight?: string }) {
@@ -194,12 +195,7 @@ export function HeroSection() {
               <div className="relative w-full max-w-xs sm:max-w-md space-y-0">
                 {/* === TOP MONITOR: Dashboard === */}
                 <MonitorFrame label="ARVAND_CONTROL_TERMINAL" status="● ONLINE">
-                  <img
-                    src="/macbook-screen.png"
-                    alt="Arvand Smart Control Dashboard"
-                    className="w-full h-full object-contain object-top bg-[#0a0a0c]"
-                    loading="eager"
-                  />
+                  <MonitorSlider />
                 </MonitorFrame>
 
                 {/* TV-style stand/console */}

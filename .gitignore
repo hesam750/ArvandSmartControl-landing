@@ -9,6 +9,11 @@ __v0_jsx-dev-runtime.ts
 # Environment variables
 .env*.local
 
+# Stray root files (copied from user's machine, not part of project)
+1782813734539.gif
+Screenshot*.png
+tsconfig.tsbuildinfo
+
 # Common ignores
 node_modules
 .next/
