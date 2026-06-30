@@ -3,11 +3,36 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Activity, Zap, Thermometer, Radio, Layers, Palette, ArrowLeft } from 'lucide-react'
+import { Activity, Zap, Thermometer, Radio, Layers, Palette, ArrowLeft } from 'lucide-react'
 import { useLanguage } from '@/lib/i18n/language-context'
+import TextType from './TextType'
+
+/** Reusable monitor frame with title bar */
+function MonitorFrame({ label, status, children, contentHeight = 'max-h-56' }: { label: string; status: string; children: React.ReactNode; contentHeight?: string }) {
+  return (
+    <div className="relative rounded-xl sm:rounded-2xl border border-border/15 bg-[#0c0c0e] p-1 sm:p-1.25 shadow-lg shadow-black/40">
+      <div className="relative rounded-[8px] sm:rounded-[11px] bg-[#111113] overflow-hidden shadow-inner shadow-black/30">
+        {/* Title bar */}
+        <div className="absolute top-0 inset-x-0 z-10 flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 bg-linear-to-b from-black/60 to-transparent">
+          <div className="flex gap-0.5 sm:gap-1">
+            <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-destructive/60" />
+            <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-chart-4/60" />
+            <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-chart-3/60" />
+          </div>
+          <span className="text-[5px] sm:text-[7px] font-mono text-white/35 tracking-widest truncate">{label}</span>
+          <span className="ms-auto text-[5px] sm:text-[7px] font-mono text-chart-3/50 tracking-widest">{status}</span>
+        </div>
+        {/* Content */}
+        <div className={`w-full h-auto ${contentHeight}`}>
+          {children}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export function HeroSection() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
 
   return (
     <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center overflow-hidden">
@@ -60,6 +85,46 @@ export function HeroSection() {
               <span className="text-foreground">{t('hero.title')}</span>
             </h1>
 
+            {/* Animated tagline — types through key value propositions */}
+            <div className="min-h-[2.5rem] sm:min-h-[3rem] mb-4 sm:mb-5">
+              <TextType
+                text={
+                  language === 'fa'
+                    ? [
+                        'پایش لحظه‌ای چیلرها',
+                        'اتصال مستقیم — بدون گیت‌وی',
+                        'کاهش مصرف انرژی',
+                        'نگهداری پیش‌بینانه',
+                      ]
+                    : language === 'ar'
+                      ? [
+                          'مراقبة لحظية للمبردات',
+                          'اتصال مباشر — بدون بوابة',
+                          'تقليل استهلاك الطاقة',
+                          'صيانة تنبؤية',
+                        ]
+                      : [
+                          'Real-time Chiller Monitoring',
+                          'Direct Connection — No Gateway',
+                          'Energy & Cost Optimization',
+                          'Predictive Maintenance',
+                        ]
+                }
+                as="p"
+                typingSpeed={60}
+                deletingSpeed={35}
+                pauseDuration={3000}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="|"
+                cursorBlinkDuration={0.4}
+                className="text-sm sm:text-base md:text-lg lg:text-xl font-mono"
+                textColors={['var(--primary)', 'var(--chart-3)', 'var(--chart-2)', 'var(--chart-4)']}
+                startOnVisible={true}
+              />
+            </div>
+
+            {/* Description */}
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8 md:mb-10 max-w-xl">
               {t('hero.description')}
             </p>
@@ -114,120 +179,54 @@ export function HeroSection() {
             </div> */}
           </motion.div>
 
-          {/* Right: Dashboard — hidden on mobile, shown on tablet+ */}
+          {/* Right: Dual monitor stack — hidden on mobile, shown on tablet+ */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 40, y: 20 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 hidden lg:block"
+            className="lg:col-span-5"
           >
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/15 via-chart-2/10 to-transparent rounded-3xl blur-3xl" />
+            <div className="relative flex flex-col items-center justify-center">
+              {/* Ambient glow behind monitors */}
+              <div className="absolute -inset-4 sm:-inset-10 bg-linear-to-br from-primary/8 via-chart-2/6 to-transparent rounded-[20px] sm:rounded-[40px] blur-xl sm:blur-3xl" />
 
-              <div className="relative rounded-2xl border border-border/60 bg-card/40 backdrop-blur-sm overflow-hidden shadow-2xl">
-                {/* Title bar */}
-                <div className="flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 border-b border-border/40 bg-background/30">
-                  <div className="flex gap-1.5">
-                    <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-destructive/50" />
-                    <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-chart-4/50" />
-                    <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-chart-3/50" />
+              {/* Monitor rack frame */}
+              <div className="relative w-full max-w-xs sm:max-w-md space-y-0">
+                {/* === TOP MONITOR: Dashboard === */}
+                <MonitorFrame label="ARVAND_CONTROL_TERMINAL" status="● ONLINE">
+                  <img
+                    src="/macbook-screen.png"
+                    alt="Arvand Smart Control Dashboard"
+                    className="w-full h-full object-contain object-top bg-[#0a0a0c]"
+                    loading="eager"
+                  />
+                </MonitorFrame>
+
+                {/* TV-style stand/console */}
+                <div className="mx-auto mt-1 sm:mt-1.5 w-full">
+                  {/* Top surface — thin accent line */}
+                  <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  {/* Main stand body — like a media console */}
+                  <div className="flex justify-center">
+                    <div className="w-[70%] sm:w-[60%] h-5 sm:h-7 bg-linear-to-b from-[#1c1c1e] to-[#0c0c0e] rounded-b-lg border-x border-b border-border/10 shadow-inner shadow-black/40">
+                      {/* Vent lines / detail */}
+                      <div className="flex items-center justify-center gap-2 sm:gap-3 h-full">
+                        <div className="w-5 sm:w-8 h-px bg-white/4 rounded-full" />
+                        <div className="w-3 sm:w-5 h-px bg-white/4 rounded-full" />
+                        <div className="w-2 sm:w-3 h-px bg-white/4 rounded-full" />
+                      </div>
+                    </div>
                   </div>
-                  <span className="ms-2 sm:ms-3 text-[9px] sm:text-[10px] data-text text-muted-foreground/60 truncate">ARVAND_CONTROL_TERMINAL v3.0</span>
-                  <span className="ms-auto text-[9px] sm:text-[10px] data-text text-muted-foreground/40 flex-shrink-0">───● ONLINE</span>
-                </div>
-
-                {/* Dashboard body */}
-                <div className="p-4 sm:p-5 space-y-3 sm:space-y-4">
-                  {/* Metric cards row */}
-                  <div className="grid grid-cols-3 gap-2 sm:gap-3">
-                    {[
-                      { label: 'CHILLERS', value: '24', sub: '+2 today', color: 'text-chart-3' },
-                      { label: 'ENERGY SAVED', value: '32%', sub: 'avg. reduction', color: 'text-primary' },
-                      { label: 'UPTIME', value: '99.7%', sub: '30-day avg', color: 'text-chart-3' },
-                    ].map((m, i) => (
-                      <motion.div
-                        key={m.label}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6 + i * 0.1 }}
-                        className="rounded-xl border border-border/40 bg-background/40 p-2 sm:p-3"
-                      >
-                        <div className="text-[8px] sm:text-[9px] data-text text-muted-foreground/60 tracking-widest mb-1">{m.label}</div>
-                        <div className={`text-base sm:text-lg md:text-xl font-bold ${m.color}`}>{m.value}</div>
-                        <div className="text-[9px] sm:text-[10px] text-muted-foreground/50 mt-0.5">{m.sub}</div>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* Chart */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 }}
-                    className="rounded-xl border border-border/40 bg-background/40 p-3 sm:p-4"
-                  >
-                    <div className="flex items-center justify-between mb-2 sm:mb-3">
-                      <span className="text-[9px] sm:text-[10px] data-text text-muted-foreground/60 tracking-wider">ENERGY CONSUMPTION</span>
-                      <span className="text-[8px] sm:text-[9px] data-text text-muted-foreground/40">7-DAY ROLLING</span>
-                    </div>
-                    <div className="h-16 sm:h-20 flex items-end gap-1 sm:gap-1.5">
-                      {[48, 62, 45, 70, 55, 78, 60].map((h, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ height: 0 }}
-                          animate={{ height: `${h}%` }}
-                          transition={{ delay: 0.9 + i * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                          className="flex-1 rounded-sm bg-gradient-to-t from-primary/80 to-primary/30 relative group"
-                        >
-                          <div className="absolute -top-5 sm:-top-6 left-1/2 -translate-x-1/2 text-[8px] sm:text-[9px] data-text text-primary/70 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">{h}kWh</div>
-                        </motion.div>
-                      ))}
-                    </div>
-                    <div className="flex justify-between mt-1.5 sm:mt-2">
-                      {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].map((d) => (
-                        <span key={d} className="text-[7px] sm:text-[8px] data-text text-muted-foreground/40">{d}</span>
-                      ))}
-                    </div>
-                  </motion.div>
-
-                  {/* Bottom row */}
-                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 1.1 }}
-                      className="rounded-xl border border-border/40 bg-background/40 p-2 sm:p-3"
-                    >
-                      <div className="text-[8px] sm:text-[9px] data-text text-muted-foreground/60 mb-1 sm:mb-1.5">SYSTEM HEALTH</div>
-                      <div className="h-1.5 rounded-full bg-border overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: '94%' }}
-                          transition={{ delay: 1.3, duration: 0.8 }}
-                          className="h-full rounded-full bg-gradient-to-r from-chart-3 to-primary"
-                        />
-                      </div>
-                      <div className="flex justify-between mt-1">
-                        <span className="text-[8px] sm:text-[9px] data-text text-chart-3">94%</span>
-                        <span className="text-[8px] sm:text-[9px] data-text text-muted-foreground/40">OPTIMAL</span>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 1.2 }}
-                      className="rounded-xl border border-border/40 bg-background/40 p-2 sm:p-3"
-                    >
-                      <div className="text-[8px] sm:text-[9px] data-text text-muted-foreground/60 mb-1 sm:mb-1.5">ALERTS</div>
-                      <div className="flex items-center gap-1 sm:gap-2">
-                        <span className="text-base sm:text-lg font-bold text-chart-3">2</span>
-                        <span className="text-[9px] sm:text-[10px] text-muted-foreground/50">minor</span>
-                        <span className="ms-auto text-[8px] sm:text-[9px] data-text text-chart-4">0 critical</span>
-                      </div>
-                    </motion.div>
+                  {/* Feet */}
+                  <div className="flex justify-between mx-auto w-[75%] sm:w-[65%]">
+                    <div className="w-3 sm:w-4 h-1 sm:h-1.5 bg-[#0c0c0e] rounded-b-full border-x border-b border-border/10" />
+                    <div className="w-3 sm:w-4 h-1 sm:h-1.5 bg-[#0c0c0e] rounded-b-full border-x border-b border-border/10" />
                   </div>
                 </div>
               </div>
+
+              {/* Subtle reflection below the stand */}
+              <div className="absolute -bottom-6 inset-x-10 h-6 bg-linear-to-t from-primary/5 to-transparent blur-xl rounded-full opacity-40" />
             </div>
           </motion.div>
         </div>
